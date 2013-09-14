@@ -1,6 +1,6 @@
 # snippet
 
-  Templating methods for the analytics.js snippet.
+  Render the analytics.js snippet.
 
 ## Example
 
