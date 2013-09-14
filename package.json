@@ -1,0 +1,18 @@
+{
+  "name": "snippet",
+  "version": "0.0.1",
+  "repository": "git://github.com/segmentio/snippet.git",
+  "description": "Templating methods for rendering the analytics.js snippet.",
+  "devDependencies": {
+    "component": "~0.17.0",
+    "express": "~3.1.0",
+    "handlebars": "~1.0.12",
+    "hbs": "~2.3.0",
+    "mkdirp": "~0.3.5",
+    "mocha": "~1.12.1",
+    "mocha-phantomjs": "~3.1.2",
+    "should": "~1.2.2",
+    "uglify-js": "~2.4.0"
+  },
+  "main": "lib/index.js"
+}

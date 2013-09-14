@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+  <title>snippet test</title>
+  <link rel="stylesheet" href="/test/mocha-1.12.1.css">
+  <script src="/test/mocha-1.12.1.js"></script>
+  <script src="/test/mocha-cloud-0.0.1.js"></script>
+  <script>window.mocha.setup({ ui: 'bdd', ignoreLeaks: true });</script>
+  <script>{{{ snippet }}}</script>
+  <script src="/build/build.js"></script>
+  <script src="/test/browser.js"></script>
+</head>
+<body>
+  <div id="mocha"></div>
+  <script>
+    // run depending on environment
+    window.mochaPhantomJS
+      ? window.mochaPhantomJS.run()
+      : window.cloud(window.mocha.run());
+  </script>
+</body>
+</html>

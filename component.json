@@ -1,0 +1,10 @@
+{
+  "name": "snippet",
+  "private": true,
+  "development": {
+    "component/assert": "*",
+    "jkroso/equals": "*",
+    "nami-doc/contains": "*",
+    "segmentio/when": "*"
+  }
+}
