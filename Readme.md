@@ -22,6 +22,6 @@ var contents = snippet.max({
   * `host`: the domain name where the analytics.js script is hosted
   * `apiKey`: the `apiKey` to load in the snippet
 
-### snippet.min(integrations)
+### snippet.min(options)
 
-  Returns the minified version of the analytics.js snippet
+  Returns the minified version of the snippet.
