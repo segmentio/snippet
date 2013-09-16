@@ -96,10 +96,4 @@ describe('.load', function () {
   });
 });
 
-describe('.SNIPPET_VERSION', function () {
-  it('2.0.0', function () {
-    assert(window.analytics.SNIPPET_VERSION == '2.0.0');
-  });
-});
-
 });

@@ -2,7 +2,7 @@
 window.analytics || (window.analytics = []);
 
 // A list of all the methods in analytics.js that we want to stub.
-analytics.methods = ['identify', 'track', 'trackLink', 'trackForm',
+window.analytics.methods = ['identify', 'track', 'trackLink', 'trackForm',
 'trackClick', 'trackSubmit', 'page', 'pageview', 'ab', 'alias', 'ready',
 'group'];
 
@@ -10,11 +10,11 @@ analytics.methods = ['identify', 'track', 'trackLink', 'trackForm',
 // "real" methods in analytics.js so that you never have to wait for the library
 // to load asynchronously to actually track things. The `method` is always the
 // first argument, so we know which method to replay the call into.
-analytics.factory = function (method) {
+window.analytics.factory = function (method) {
   return function () {
     var args = Array.prototype.slice.call(arguments);
     args.unshift(method);
-    analytics.push(args);
+    window.analytics.push(args);
   };
 };
 
@@ -25,7 +25,7 @@ for (var i = 0; i < analytics.methods.length; i++) {
 }
 
 // Define a method that will asynchronously load analytics.js from our CDN.
-analytics.load = function (apiKey) {
+window.analytics.load = function (apiKey) {
 
   // Create an async script element for analytics.js based on your API key.
   var script = document.createElement('script');
@@ -40,8 +40,8 @@ analytics.load = function (apiKey) {
 };
 
 // Add a version so we can keep track of what's out there in the wild.
-analytics.SNIPPET_VERSION = '2.0.0';
+window.analytics.SNIPPET_VERSION = '2.0.1';
 
 // Load analytics.js with your API key, which will automatically load all of the
 // analytics integrations you've turned on for your account. Boosh!
-analytics.load('{{{ apiKey }}}');
+window.analytics.load('{{{ apiKey }}}');
