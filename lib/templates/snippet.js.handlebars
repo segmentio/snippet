@@ -15,6 +15,7 @@ window.analytics.factory = function (method) {
     var args = Array.prototype.slice.call(arguments);
     args.unshift(method);
     window.analytics.push(args);
+    return window.analytics;
   };
 };
 

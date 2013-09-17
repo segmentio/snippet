@@ -79,6 +79,11 @@ describe('.factory', function () {
     assert(equal(window.analytics[0], ['test', 1, 2, 3]));
   });
 
+  it('should return the analytics object', function () {
+    var stub = window.analytics.factory();
+    assert(window.analytics == stub());
+  });
+
   it('should generate a stub for each method', function () {
     for (var i = 0, method; method = window.analytics.methods[i]; i++) {
       assert('function' == typeof window.analytics[method]);
