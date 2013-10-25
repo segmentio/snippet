@@ -1,3 +1,7 @@
+2.0.3 - September 16, 2013
+--------------------------
+* add `on`, `once`, `off`
+
 2.0.2 - September 16, 2013
 --------------------------
 * made queue stubs return the `analytics` object

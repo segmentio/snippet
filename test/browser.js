@@ -62,6 +62,18 @@ describe('.methods', function () {
   it('.group', function () {
     assert(contains(window.analytics.methods, 'group'));
   });
+
+  it('.on', function () {
+    assert(contains(window.analytics.methods, 'on'));
+  });
+
+  it('.once', function () {
+    assert(contains(window.analytics.methods, 'once'));
+  });
+
+  it('.off', function () {
+    assert(contains(window.analytics.methods, 'off'));
+  });
 });
 
 describe('.factory', function () {

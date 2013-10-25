@@ -4,7 +4,7 @@ window.analytics || (window.analytics = []);
 // A list of all the methods in analytics.js that we want to stub.
 window.analytics.methods = ['identify', 'track', 'trackLink', 'trackForm',
 'trackClick', 'trackSubmit', 'page', 'pageview', 'ab', 'alias', 'ready',
-'group'];
+'group', 'on', 'once', 'off'];
 
 // Define a factory to create queue stubs. These are placeholders for the
 // "real" methods in analytics.js so that you never have to wait for the library
