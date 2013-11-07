@@ -10,8 +10,10 @@ describe('snippet', function () {
     assert(window.analytics instanceof Array);
   });
 
-  it('should call .page by default', function () {
-    assert(equal(window.analytics[0], ['page']));
+  describe('.page', function () {
+    it('should call .page by default', function () {
+      assert(equal(window.analytics[0], ['page']));
+    });
   });
 
   describe('.methods', function () {
@@ -92,7 +94,8 @@ describe('snippet', function () {
     it('should push arguments onto the stub', function () {
       var stub = window.analytics.factory('test');
       stub(1, 2, 3);
-      assert(equal(window.analytics[1], ['test', 1, 2, 3]));
+      var args = window.analytics[window.analytics.length - 1];
+      assert(equal(args, ['test', 1, 2, 3]));
     });
 
     it('should return the analytics object', function () {
