@@ -1,0 +1,55 @@
+#!/usr/bin/env node
+
+var fs = require('fs');
+var minify = require('uglify-js').minify;
+var mkdir = require('mkdirp');
+var path = require('path');
+
+
+/**
+ * Read snippet.
+ */
+
+var js = fs.readFileSync(path.resolve(__dirname, '../lib/snippet.js'), 'utf8');
+var min = minify(js, { fromString: true }).code;
+
+
+/**
+ * Keep a break before `analytics.load` and `analytics.page()` in the
+ * minified snippet.
+ */
+
+min = linebreak(min, 'window.analytics.load(');
+min = linebreak(min, 'window.analytics.page()');
+
+/**
+ * Write templates.
+ */
+
+mkdir(templates());
+fs.writeFileSync(templates('snippet.js.handlebars'), js);
+fs.writeFileSync(templates('snippet.min.js.handlebars'), min);
+
+
+/**
+ * Return a templates path, with an optional `filename`.
+ *
+ * @param {String} filename (optional)
+ */
+
+function templates (filename) {
+  var dir = '../templates';
+  if (filename) dir += '/' + filename;
+  return path.resolve(__dirname, dir);
+}
+
+/**
+ * Preserve the linebreak for a line `prefix` in `string`
+ *
+ * @param {String} string
+ * @param {String} prefix
+ */
+
+function linebreak (string, prefix) {
+  return string.replace(prefix, '\n' + prefix);
+}

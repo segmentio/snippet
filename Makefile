@@ -6,7 +6,7 @@ COMPONENT = node_modules/component/bin/component
 
 build: install
 	$(COMPONENT) build --dev
-	node lib/builder
+	node bin/build
 
 install: package.json component.json
 	$(COMPONENT) install --dev
@@ -27,6 +27,7 @@ test: build test-node server
 	$(PHANTOM) $(TEST)
 	$(PHANTOM) $(TEST)/min
 	make kill
+
 
 test-node: build
 	$(MOCHA) --require should --reporter spec test/node.js
