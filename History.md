@@ -1,3 +1,11 @@
+2.0.6 - November 11, 2013
+-------------------------
+* adding window.analytics where forgotten
+
+2.0.5 - November 10, 2013
+-------------------------
+* fixing default host
+
 2.0.4 - November 6, 2013
 ------------------------
 * add `window.analytics.page()`
