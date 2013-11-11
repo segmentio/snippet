@@ -20,9 +20,9 @@ window.analytics.factory = function (method) {
 };
 
 // For each of our methods, generate a queueing method.
-for (var i = 0; i < analytics.methods.length; i++) {
-  var method = analytics.methods[i];
-  analytics[method] = analytics.factory(method);
+for (var i = 0; i < window.analytics.methods.length; i++) {
+  var method = window.analytics.methods[i];
+  window.analytics[method] = window.analytics.factory(method);
 }
 
 // Define a method that will asynchronously load analytics.js from our CDN.
@@ -41,7 +41,7 @@ window.analytics.load = function (apiKey) {
 };
 
 // Add a version so we can keep track of what's out there in the wild.
-window.analytics.SNIPPET_VERSION = '2.0.5';
+window.analytics.SNIPPET_VERSION = '2.0.6';
 
 // Load analytics.js with your API key, which will automatically load all of the
 // analytics integrations you've turned on for your account. Boosh!
