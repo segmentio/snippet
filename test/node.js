@@ -17,7 +17,30 @@ describe('#max', function () {
   });
 
   it('should set the api key', function () {
-    snippet.max({ apiKey: 'key' }).should.include('analytics.load(\'key\')');
+    snippet.max({ apiKey: 'key' }).should.include('window.analytics.load(\'key\')');
+  });
+
+  it('should not include page if explicitly omitted', function () {
+    snippet.max({ page: false }).should.not.include('window.analytics.page()');
+  });
+
+  it('should include page by default', function () {
+    snippet.max({}).should.include('window.analytics.page()');
+  });
+
+  it('should omit page.category if not provided', function () {
+    snippet.max({ page: { name: 'Signup' }}).should.include('window.analytics.page("Signup");');
+  });
+
+  it('should set the full page options', function () {
+    var page = {
+      category: 'Docs',
+      name: 'Integrations',
+      properties: {
+        foo: 'bar'
+      }
+    };
+    snippet.max({ page: page }).should.include('window.analytics.page("Docs", "Integrations", {"foo":"bar"});');
   });
 });
 

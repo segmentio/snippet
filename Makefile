@@ -6,7 +6,6 @@ COMPONENT = node_modules/component/bin/component
 
 build: install
 	$(COMPONENT) build --dev
-	./bin/build
 
 install: package.json component.json
 	$(COMPONENT) install --dev
