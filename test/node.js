@@ -66,6 +66,11 @@ describe('#min', function () {
     var min = snippet.min().length;
     min.should.be.below(max);
   });
+
+  it('should separate out the page and load calls', function () {
+    var min = snippet.min();
+    min.split('\n').should.have.lengthOf(3);
+  });
 });
 
 });
