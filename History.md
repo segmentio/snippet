@@ -1,3 +1,7 @@
+2.0.8 - December 5, 2013
+------------------------
+* add linebreak fixes
+
 2.0.7 - December 4, 2013
 ------------------------
 * adding page options to snippet
