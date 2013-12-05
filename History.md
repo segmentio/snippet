@@ -1,3 +1,7 @@
+2.0.7 - December 4, 2013
+------------------------
+* adding page options to snippet
+
 2.0.6 - November 11, 2013
 -------------------------
 * adding window.analytics where forgotten
