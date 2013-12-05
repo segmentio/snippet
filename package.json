@@ -6,7 +6,6 @@
   "devDependencies": {
     "component": "~0.17.0",
     "express": "~3.1.0",
-    "hbs": "~2.3.0",
     "mkdirp": "~0.3.5",
     "mocha": "~1.12.1",
     "mocha-phantomjs": "~3.1.2",
@@ -15,6 +14,8 @@
   },
   "main": "lib/index.js",
   "dependencies": {
-    "handlebars": "~1.1.2"
+    "handlebars": "~1.1.2",
+    "minify": "git://github.com/segmentio/minify",
+    "hbs": "~2.4.0"
   }
 }
