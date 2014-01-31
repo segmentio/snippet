@@ -10,6 +10,13 @@ describe('snippet', function () {
     assert(window.analytics instanceof Array);
   });
 
+  it('should load the script once', function(){
+    var scripts = document.getElementsByTagName('script');
+    var length = scripts.length;
+    Function(snippet.textContent)();
+    assert(length == scripts.length);
+  })
+
   describe('.page', function () {
     it('should call .page by default', function () {
       assert(equal(window.analytics[0], ['page']));

@@ -27,10 +27,11 @@ for (var i = 0; i < window.analytics.methods.length; i++) {
 
 // Define a method that will asynchronously load analytics.js from our CDN.
 window.analytics.load = function (apiKey) {
-
+  if (document.getElementById('analyticsjs')) return;
   // Create an async script element for analytics.js based on your API key.
   var script = document.createElement('script');
   script.type = 'text/javascript';
+  script.id = 'analyticsjs';
   script.async = true;
   script.src = ('https:' === document.location.protocol ? 'https://' : 'http://') +
                 '{{{ host }}}/analytics.js/v1/' + apiKey + '/analytics.min.js';
