@@ -1,3 +1,8 @@
+
+2.0.9 - March 28, 2013
+----------------------
+* shorten line length
+
 2.0.8 - December 5, 2013
 ------------------------
 * add linebreak fixes

@@ -2,7 +2,7 @@
   "name": "snippet",
   "repo": "segmentio/snippet",
   "description": "Segment.io loading snippet",
-  "version": "2.0.8",
+  "version": "2.0.9",
   "development": {
     "component/assert": "*",
     "jkroso/equals": "*",
