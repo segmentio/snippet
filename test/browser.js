@@ -60,10 +60,6 @@ describe('snippet', function () {
       assert(contains(window.analytics.methods, 'pageview'));
     });
 
-    it('.ab', function () {
-      assert(contains(window.analytics.methods, 'ab'));
-    });
-
     it('.alias', function () {
       assert(contains(window.analytics.methods, 'alias'));
     });
