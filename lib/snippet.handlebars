@@ -2,11 +2,18 @@
 (function(win, doc){
 
   /**
-   * Vars.
+   * Define analytics queue if it doesn't exist.
    */
 
   var analytics = win.analytics = win.analytics || [];
   var secure = 'https:' == win.location.protocol;
+
+  /**
+   * Abort if this page contains a snippet.
+   * Or if the snippet was run before.
+   */
+
+  if (analytics.SNIPPET_VERSION) return;
 
   /**
    * Version.
@@ -59,21 +66,30 @@
   }
 
   /**
-   * Load the script.
+   * Load.
    */
 
-  var script = doc.createElement('script');
-  var scripts = doc.getElementsByTagName('script');
-  script.type = 'text/javascript';
-  script.async = true;
-  script.src = (secure ? 'https://' : 'http://')
-    + '{{{ host }}}/analytics.js/v1/'
-    + '{{{ apiKey }}}/analytics.min.js';
+  analytics.load = function(key){
+    var script = doc.createElement('script');
+    var scripts = doc.getElementsByTagName('script');
+    script.type = 'text/javascript';
+    script.async = true;
+    script.src = (secure ? 'https://' : 'http://')
+      + '{{{ host }}}/analytics.js/v1/'
+      + key + '/analytics.min.js';
+    scripts[0].parentNode.insertBefore(script);
+  };
 
   /**
-   * Append.
+   * Load `key`.
    */
 
-  scripts[0].parentNode.insertBefore(script);
+  analytics.load('{{{ apiKey }}}');
+
+  /**
+   * Placeholder for our page call.
+   */
+
+  {{{ page }}}
 
 })(window, document);
