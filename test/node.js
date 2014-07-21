@@ -69,7 +69,7 @@ describe('#min', function () {
 
   it('should separate out the page and load calls', function () {
     var min = snippet.min();
-    min.split('\n').should.have.lengthOf(3);
+    min.split('\n').should.have.lengthOf(7);
   });
 });
 
