@@ -1,12 +1,12 @@
 
-(function(win, doc){
+(function(window, document){
 
   /**
    * Create a queue, but don't obliterate an existing one!
    */
 
-  var analytics = win.analytics = win.analytics || [];
-  var secure = 'https:' == win.location.protocol;
+  var analytics = window.analytics = window.analytics || [];
+  var secure = 'https:' == window.location.protocol;
 
   /**
    * Abort if this page contains a snippet.
@@ -71,8 +71,8 @@
    */
 
   analytics.load = function(key){
-    var script = doc.createElement('script');
-    var scripts = doc.getElementsByTagName('script');
+    var script = document.createElement('script');
+    var scripts = document.getElementsByTagName('script');
     script.type = 'text/javascript';
     script.async = true;
     script.src = (secure ? 'https://' : 'http://')
