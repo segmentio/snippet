@@ -17,19 +17,19 @@ describe('#max', function () {
   });
 
   it('should set the api key', function () {
-    snippet.max({ apiKey: 'key' }).should.include('window.analytics.load(\'key\')');
+    snippet.max({ apiKey: 'key' }).should.include('analytics.load(\'key\')');
   });
 
   it('should not include page if explicitly omitted', function () {
-    snippet.max({ page: false }).should.not.include('window.analytics.page()');
+    snippet.max({ page: false }).should.not.include('analytics.page()');
   });
 
   it('should include page by default', function () {
-    snippet.max({}).should.include('window.analytics.page()');
+    snippet.max({}).should.include('analytics.page()');
   });
 
   it('should omit page.category if not provided', function () {
-    snippet.max({ page: { name: 'Signup' }}).should.include('window.analytics.page("Signup");');
+    snippet.max({ page: { name: 'Signup' }}).should.include('analytics.page("Signup");');
   });
 
   it('should set the full page options', function () {
@@ -40,7 +40,7 @@ describe('#max', function () {
         foo: 'bar'
       }
     };
-    snippet.max({ page: page }).should.include('window.analytics.page("Docs", "Integrations", {"foo":"bar"});');
+    snippet.max({ page: page }).should.include('analytics.page("Docs", "Integrations", {"foo":"bar"});');
   });
 });
 
@@ -69,7 +69,7 @@ describe('#min', function () {
 
   it('should separate out the page and load calls', function () {
     var min = snippet.min();
-    min.split('\n').should.have.lengthOf(3);
+    min.split('\n').should.have.lengthOf(7);
   });
 });
 

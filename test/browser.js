@@ -6,15 +6,21 @@ describe('snippet', function () {
   var equal = require('equals');
   var when = require('when');
 
+  beforeEach(function(){
+    window.analytics = null;
+    Function(snippet.textContent)();
+  })
+
   it('should define a global queue', function () {
     assert(window.analytics instanceof Array);
   });
 
-  it('should load the script once', function(){
-    var scripts = document.getElementsByTagName('script');
-    var length = scripts.length;
+  it('should run the snippet once', function(){
+    delete window.analytics;
     Function(snippet.textContent)();
-    assert(length == scripts.length);
+    assert(1 == window.analytics.length);
+    Function(snippet.textContent)();
+    assert(1 == window.analytics.length);
   })
 
   describe('.page', function () {
@@ -85,40 +91,24 @@ describe('snippet', function () {
     });
   });
 
-  describe('.factory', function () {
-    it('should define a factory', function () {
-      assert('function' == typeof window.analytics.factory);
-    });
-
-    it('should return a queue stub', function () {
-      assert('function' == typeof window.analytics.factory('test'));
-    });
-
-    it('should push arguments onto the stub', function () {
-      var stub = window.analytics.factory('test');
-      stub(1, 2, 3);
-      var args = window.analytics[window.analytics.length - 1];
-      assert(equal(args, ['test', 1, 2, 3]));
-    });
-
-    it('should return the analytics object', function () {
-      var stub = window.analytics.factory();
-      assert(window.analytics == stub());
-    });
-
-    it('should generate a stub for each method', function () {
-      for (var i = 0, method; method = window.analytics.methods[i]; i++) {
-        assert('function' == typeof window.analytics[method]);
-      }
-    });
-  });
+  describe('queue', function(){
+    analytics.methods.forEach(function(method){
+      it('should queue .' + method + '() calls with the correct arguments', function(){
+        analytics.pop(); // remove page call.
+        analytics[method](1, 2, 3);
+        assert(1 == analytics.length);
+        assert.deepEqual([method, 1, 2, 3], analytics[0]);
+        analytics[method]([]);
+        assert(2 == analytics.length);
+        assert.deepEqual([method, []], analytics[1]);
+      })
+    })
+  })
 
   describe('.load', function () {
-    it('should define a load method', function () {
-      assert('function' == typeof window.analytics.load);
-    });
-
     it('should load analytics.js from the server', function (done) {
+      delete window.analytics;
+      Function(snippet.textContent)();
       when(function () { return window.loaded; }, done);
     });
   });

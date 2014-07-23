@@ -1,4 +1,4 @@
 node_modules
 components
 build
-test/server/pid.txt
+test/pid.txt

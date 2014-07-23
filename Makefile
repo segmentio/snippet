@@ -14,7 +14,7 @@ install: package.json component.json
 clean:
 	@rm -rf build components
 
-server:
+server: kill
 	@node test/index.js &
 	@sleep 1
 
