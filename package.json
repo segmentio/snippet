@@ -4,7 +4,7 @@
   "repository": "git://github.com/segmentio/snippet.git",
   "description": "Templating methods for rendering the analytics.js snippet.",
   "devDependencies": {
-    "component": "~0.17.0",
+    "component": "~0.19.0",
     "express": "~3.1.0",
     "mkdirp": "~0.3.5",
     "mocha": "~1.12.1",

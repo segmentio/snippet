@@ -8,7 +8,7 @@
 var snippet = require('snippet');
 
 var contents = snippet.max({
-  host: 'cdn.segment.io',
+  host: 'cdn.segment.com',
   apiKey: '03fwkuu3',
   page: {
     category: 'Docs',
