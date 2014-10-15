@@ -1,4 +1,9 @@
 
+2.1.0 / 2014-10-15
+==================
+
+ * updating host to cdn.segment.com
+
 2.0.9 - March 28, 2013
 ----------------------
 * shorten line length
