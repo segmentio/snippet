@@ -4,12 +4,15 @@ PHANTOM = node_modules/.bin/mocha-phantomjs --setting web-security=false --setti
 MOCHA = node_modules/.bin/mocha
 COMPONENT = node_modules/component/bin/component
 
-build: install
+build: node_modules components
 	@$(COMPONENT) build --dev
 
-install: package.json component.json
+components: component.json
 	@$(COMPONENT) install --dev
-	@npm install .
+
+node_modules: package.json
+	@npm install
+	@touch $@
 
 clean:
 	@rm -rf build components
