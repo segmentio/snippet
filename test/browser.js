@@ -15,7 +15,16 @@ describe('snippet', function () {
     var length = scripts.length;
     Function(snippet.textContent)();
     assert(length == scripts.length);
-  })
+  });
+
+  it('should not error when window.console is unavailable', function(){
+    window.analytics.included = true;
+    var scripts = document.getElementsByTagName('script');
+    var c = console;
+    window.console = null;
+    Function(snippet.textContent)();
+    window.console = c;
+  });
 
   describe('.page', function () {
     it('should call .page by default', function () {
