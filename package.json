@@ -1,6 +1,6 @@
 {
   "name": "segmentio-snippet",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "repository": "git://github.com/segmentio/snippet.git",
   "description": "Templating methods for rendering the analytics.js snippet.",
   "devDependencies": {
