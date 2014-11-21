@@ -1,43 +1,40 @@
 
-TEST = http://localhost:4321/snippet-test
-PHANTOM = node_modules/.bin/mocha-phantomjs --setting web-security=false --setting local-to-remote-url-access=true
-MOCHA = node_modules/.bin/mocha
-COMPONENT = node_modules/component/bin/component
+SRC= test/browser.js
+DUO= node_modules/.bin/duo
+DUOT= node_modules/.bin/duo-test
 
-build: node_modules components
-	@$(COMPONENT) build --dev
-
-components: component.json
-	@$(COMPONENT) install --dev
+test/build.js: node_modules $(SRC)
+	@$(DUO) test/browser.js > $@
 
 node_modules: package.json
 	@npm install
 	@touch $@
 
 clean:
-	@rm -rf build components
+	rm -rf components test/build.js
 
-server:
-	@node test/index.js &
-	@sleep 1
+test:
+	@$(DUOT) phantomjs \
+		--middleware test/serve.js \
+		--commands make \
+		--title snippet \
+		--reporter spec \
+		--port 3000
 
-kill:
-	@-test -e test/pid.txt \
-		&& kill -9 `cat test/pid.txt` \
-		&& rm test/pid.txt
+test-browser:
+	@$(DUOT) browser \
+		--middleware test/serve.js \
+		--commands make \
+		--title snippet \
+		--port 3000
 
-test: build test-node server
-	@$(PHANTOM) $(TEST)
-	@$(PHANTOM) $(TEST)/min
-	@make kill
+test-sauce:
+	@$(DUOT) saucelabs \
+		--browsers $(BROWSERS) \
+		--build test/build.js \
+		--commands make \
+		--title snippet \
+		--reporter spec \
+		--port 3000
 
-
-test-node: build
-	@$(MOCHA) --require should --reporter spec test/node.js
-
-test-browser: build server
-	@sleep 1
-	@open $(TEST)
-	@open $(TEST)/min
-
-.PHONY: build clean templates test
+.PHONY: test clean
