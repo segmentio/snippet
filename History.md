@@ -1,4 +1,11 @@
 
+3.0.0 / 2014-11-26
+==================
+
+  * refactor
+  * test: window.analytics -> analytics
+  * wrap in a closure
+
 2.1.1 / 2014-11-12
 ==================
 
