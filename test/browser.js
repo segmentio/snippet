@@ -1,21 +1,49 @@
 
 describe('snippet', function () {
 
-  var assert = require('assert');
-  var contains = require('contains');
-  var equal = require('equals');
-  var when = require('when');
+  var assert = require('component/assert');
+  var when = require('segmentio/when');
+  var spy = require('segmentio/spy');
+  var snippet;
+
+  before(function(){
+    var req = new XMLHttpRequest;
+    req.open('GET', '/snippet', false);
+    req.send();
+    snippet = req.responseText;
+    if (200 != req.status) throw new Error('can\'t get /snippet (' + req.status + ')');
+  });
 
   it('should define a global queue', function () {
     assert(window.analytics instanceof Array);
   });
 
   it('should load the script once', function(){
-    var scripts = document.getElementsByTagName('script');
+    var scripts = document.scripts;
     var length = scripts.length;
-    Function(snippet.textContent)();
+    Function(snippet)();
     assert(length == scripts.length);
   });
+
+  it('should warn using console.error when the snippet is included > 1', function(){
+    var global = {};
+    global.window = global;
+    global.analytics = { invoked: true };
+    global.console = { error: spy() };
+    with (global) eval(snippet);
+    var args = global.console.error.args;
+    assert.equal('Segment snippet included twice.', args[0][0]);
+  });
+
+  it('should not call .page() again when included > 1', function(){
+    var global = {};
+    global.window = global;
+    global.analytics = { invoked: true, page: spy() };
+    global.console = { error: spy() };
+    with (global) eval(snippet);
+    var args = global.analytics.page.args;
+    assert.equal(0, args.length)
+  })
 
   it('should not error when window.console is unavailable', function(){
     window.analytics.included = true;
@@ -28,7 +56,7 @@ describe('snippet', function () {
 
   describe('.page', function () {
     it('should call .page by default', function () {
-      assert(equal(window.analytics[0], ['page']));
+      assert.deepEqual(window.analytics[0], ['page']);
     });
   });
 
@@ -38,59 +66,59 @@ describe('snippet', function () {
     });
 
     it('.identify', function () {
-      assert(contains(window.analytics.methods, 'identify'));
+      assert(~window.analytics.methods.indexOf('identify'));
     });
 
     it('.track', function () {
-      assert(contains(window.analytics.methods, 'track'));
+      assert(~window.analytics.methods.indexOf('track'));
     });
 
     it('.trackLink', function () {
-      assert(contains(window.analytics.methods, 'trackLink'));
+      assert(~window.analytics.methods.indexOf('trackLink'));
     });
 
     it('.trackForm', function () {
-      assert(contains(window.analytics.methods, 'trackForm'));
+      assert(~window.analytics.methods.indexOf('trackForm'));
     });
 
     it('.trackClick', function () {
-      assert(contains(window.analytics.methods, 'trackClick'));
+      assert(~window.analytics.methods.indexOf('trackClick'));
     });
 
     it('.trackSubmit', function () {
-      assert(contains(window.analytics.methods, 'trackSubmit'));
+      assert(~window.analytics.methods.indexOf('trackSubmit'));
     });
 
     it('.page', function () {
-      assert(contains(window.analytics.methods, 'page'));
+      assert(~window.analytics.methods.indexOf('page'));
     });
 
     it('.pageview', function () {
-      assert(contains(window.analytics.methods, 'pageview'));
+      assert(~window.analytics.methods.indexOf('pageview'));
     });
 
     it('.alias', function () {
-      assert(contains(window.analytics.methods, 'alias'));
+      assert(~window.analytics.methods.indexOf('alias'));
     });
 
     it('.ready', function () {
-      assert(contains(window.analytics.methods, 'ready'));
+      assert(~window.analytics.methods.indexOf('ready'));
     });
 
     it('.group', function () {
-      assert(contains(window.analytics.methods, 'group'));
+      assert(~window.analytics.methods.indexOf('group'));
     });
 
     it('.on', function () {
-      assert(contains(window.analytics.methods, 'on'));
+      assert(~window.analytics.methods.indexOf('on'));
     });
 
     it('.once', function () {
-      assert(contains(window.analytics.methods, 'once'));
+      assert(~window.analytics.methods.indexOf('once'));
     });
 
     it('.off', function () {
-      assert(contains(window.analytics.methods, 'off'));
+      assert(~window.analytics.methods.indexOf('off'));
     });
   });
 
@@ -107,7 +135,7 @@ describe('snippet', function () {
       var stub = window.analytics.factory('test');
       stub(1, 2, 3);
       var args = window.analytics[window.analytics.length - 1];
-      assert(equal(args, ['test', 1, 2, 3]));
+      assert.deepEqual(args, ['test', 1, 2, 3]);
     });
 
     it('should return the analytics object', function () {
