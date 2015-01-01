@@ -35,6 +35,18 @@ describe('snippet', function () {
     assert.equal('Segment snippet included twice.', args[0][0]);
   });
 
+  it('should ignore the snippet when the real analytics is already included', function(){
+    var global = {};
+    var ajs = { initialize: function(){} };
+    global.window = global;
+    global.analytics = ajs;
+    global.console = { error: spy() };
+    with (global) eval(snippet);
+    var args = global.console.error.args;
+    assert.equal(ajs, global.analytics);
+    assert.equal(0, args.length);
+  });
+
   it('should not call .page() again when included > 1', function(){
     var global = {};
     global.window = global;
