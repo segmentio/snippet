@@ -1,4 +1,10 @@
 
+3.0.1 / 2015-01-05
+==================
+
+  * snippet: fix ajax loading stack overflow case
+  * Adding semi-colon because ocd
+
 3.0.0 / 2014-11-26
 ==================
 
