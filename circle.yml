@@ -4,6 +4,8 @@ machine:
     version: 0.11
 
 dependencies:
+  pre:
+    - npm i -g npm@1.4.9
   override:
     - make
 
