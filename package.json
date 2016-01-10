@@ -13,7 +13,7 @@
   "main": "lib/index.js",
   "dependencies": {
     "handlebars": "~1.1.2",
-    "minify": "git://github.com/segmentio/minify",
-    "hbs": "~2.4.0"
+    "hbs": "~2.4.0",
+    "minify": "^2.0.3"
   }
 }
