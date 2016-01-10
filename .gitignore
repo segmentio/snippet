@@ -1,3 +1,6 @@
 node_modules
 components
 test/build.js
+npm-debug.log
+
+test.js
