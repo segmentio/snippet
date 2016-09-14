@@ -81,7 +81,7 @@ distclean: clean
 .PHONY: distclean
 
 # Lint JavaScript source files.
-lint: build
+lint: install build
 	@$(ESLINT) $(ALL_FILES)
 .PHONY: lint
 

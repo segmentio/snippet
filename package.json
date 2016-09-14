@@ -1,11 +1,12 @@
 {
-  "name": "segmentio-snippet",
+  "name": "@segment/snippet",
+  "author": "Segment.io <friends@segment.com>",
   "version": "3.1.0",
   "repository": "git://github.com/segmentio/snippet.git",
   "description": "Templating methods for rendering the analytics.js snippet.",
   "main": "lib/index.js",
   "dependencies": {
-    "json3": "^3.3.2"
+    "@ndhoule/map": "^2.0.1"
   },
   "devDependencies": {
     "@segment/clear-env": "^2.0.3",
