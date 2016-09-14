@@ -1,3 +1,3 @@
 node_modules
-components
-test/build.js
+dist
+coverage

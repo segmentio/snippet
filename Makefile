@@ -1,40 +1,110 @@
+##
+# Binaries
+##
 
-SRC= test/browser.js
-DUO= node_modules/.bin/duo
-DUOT= node_modules/.bin/duo-test
+ESLINT := node_modules/.bin/eslint
+ISTANBUL := node_modules/.bin/istanbul
+KARMA := node_modules/.bin/karma
+MATCHA := node_modules/.bin/matcha
+MOCHA := node_modules/.bin/mocha
+_MOCHA := node_modules/.bin/_mocha
 
-test/build.js: node_modules $(SRC)
-	@$(DUO) test/browser.js > $@
+##
+# Files
+##
 
-node_modules: package.json
+LIBS = $(shell find lib -type f -name "*.js")
+TESTS = $(shell find test -type f -name "*.test.js")
+SUPPORT = $(wildcard karma.conf*.js)
+ALL_FILES = $(LIBS) $(TESTS) $(SUPPORT)
+
+##
+# Program options/flags
+##
+
+# A list of options to pass to Karma
+# Overriding this overwrites all options specified in this file (e.g. BROWSERS)
+KARMA_FLAGS ?=
+
+# A list of Karma browser launchers to run
+# http://karma-runner.github.io/0.13/config/browsers.html
+BROWSERS ?=
+ifdef BROWSERS
+KARMA_FLAGS += --browsers $(BROWSERS)
+endif
+
+ifdef CI
+KARMA_CONF ?= karma.conf.ci.js
+else
+KARMA_CONF ?= karma.conf.js
+endif
+
+# Mocha flags.
+GREP ?= .
+MOCHA_REPORTER ?= spec
+MOCHA_FLAGS := \
+	--grep "$(GREP)" \
+	--reporter "$(MOCHA_REPORTER)" \
+	--ui bdd
+
+# Istanbul flags.
+COVERAGE_DIR ?= coverage
+ISTANBUL_FLAGS := \
+	--root "./lib" \
+	--include-all-sources true \
+	--dir "$(COVERAGE_DIR)/Node $(shell node -v)"
+
+##
+# Tasks
+##
+
+# Install node modules.
+node_modules: package.json $(wildcard node_modules/*/package.json)
 	@npm install
 	@touch $@
 
+# Install dependencies.
+install: node_modules
+
+build: install
+	@node scripts/build.js
+.PHONY: build
+
+# Remove temporary files and build artifacts.
 clean:
-	rm -rf components test/build.js
+	rm -rf *.log coverage
+.PHONY: clean
 
-test:
-	@$(DUOT) phantomjs \
-		--middleware test/serve.js \
-		--commands make \
-		--title snippet \
-		--reporter spec \
-		--port 3000
+# Remove temporary files, build artifacts, and vendor dependencies.
+distclean: clean
+	rm -rf node_modules
+.PHONY: distclean
 
-test-browser:
-	@$(DUOT) browser \
-		--middleware test/serve.js \
-		--commands make \
-		--title snippet \
-		--port 3000
+# Lint JavaScript source files.
+lint: build
+	@$(ESLINT) $(ALL_FILES)
+.PHONY: lint
 
-test-sauce:
-	@$(DUOT) saucelabs \
-		--browsers $(BROWSERS) \
-		--build test/build.js \
-		--commands make \
-		--title snippet \
-		--reporter spec \
-		--port 3000
+# Attempt to fix linting errors.
+fmt: build
+	@$(ESLINT) --fix $(ALL_FILES)
+.PHONY: fmt
 
-.PHONY: test clean
+bench: install build
+	@$(MATCHA) test/bench.js
+.PHONY: bench
+
+# Run unit tests in node.
+test-node: install build
+	@NODE_ENV=test $(ISTANBUL) cover $(ISTANBUL_FLAGS) $(_MOCHA) -- $(MOCHA_FLAGS) test/render.test.js
+.PHONY: test-node
+
+# Run browser unit tests in a browser.
+test-browser: install build
+	@$(KARMA) start $(KARMA_FLAGS) $(KARMA_CONF)
+.PHONY: test-browser
+
+# Default test target.
+test: lint bench test-node test-browser
+.PHONY: test
+.DEFAULT_GOAL = test
