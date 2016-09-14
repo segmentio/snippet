@@ -1,19 +1,36 @@
 {
-  "name": "segmentio-snippet",
+  "name": "@segment/snippet",
+  "author": "Segment.io <friends@segment.com>",
   "version": "3.1.0",
   "repository": "git://github.com/segmentio/snippet.git",
   "description": "Templating methods for rendering the analytics.js snippet.",
-  "devDependencies": {
-    "duo": "^0.8.10",
-    "duo-test": "^0.3.12",
-    "mocha": "~1.12.1",
-    "should": "~1.2.2",
-    "uglify-js": "~2.4.0"
-  },
   "main": "lib/index.js",
   "dependencies": {
-    "handlebars": "~1.1.2",
-    "minify": "git://github.com/segmentio/minify",
-    "hbs": "~2.4.0"
+    "@ndhoule/map": "^2.0.1"
+  },
+  "devDependencies": {
+    "@segment/clear-env": "^2.0.3",
+    "@segment/eslint-config": "^3.4.0",
+    "browserify": "^13.1.0",
+    "browserify-istanbul": "^2.0.0",
+    "eslint": "^2.13.1",
+    "eslint-plugin-mocha": "^2.2.0",
+    "eslint-plugin-require-path-exists": "^1.1.5",
+    "istanbul": "^0.4.5",
+    "karma": "^1.1.0",
+    "karma-browserify": "^5.0.4",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-coverage": "^1.0.0",
+    "karma-junit-reporter": "^1.0.0",
+    "karma-mocha": "1.0.1",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "karma-sauce-launcher": "^1.0.0",
+    "karma-spec-reporter": "0.0.26",
+    "lodash": "^4.15.0",
+    "matcha": "^0.7.0",
+    "mkdirp": "^0.5.1",
+    "mocha": "~1.12.1",
+    "sinon": "^1.17.5",
+    "uglify-js": "~2.4.0"
   }
 }

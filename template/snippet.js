@@ -65,7 +65,7 @@
     script.async = true;
     script.src = ('https:' === document.location.protocol
       ? 'https://' : 'http://')
-      + '{{{ host }}}/analytics.js/v1/'
+      + '<%= settings.host %>/analytics.js/v1/'
       + key + '/analytics.min.js';
 
     // Insert our script next to the first script element.
@@ -78,11 +78,10 @@
 
   // Load Analytics.js with your key, which will automatically
   // load the tools you've enabled for your account. Boosh!
-  {{{ load }}}
+  analytics.load("<%= settings.apiKey %>");
 
   // Make the first page call to load the integrations. If
   // you'd like to manually name or tag the page, edit or
   // move this call however you'd like.
-  {{{ page }}}
-
+  '<%= settings.page %>'
 })();

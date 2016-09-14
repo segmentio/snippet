@@ -1,13 +1,19 @@
-[![Circle CI](https://circleci.com/gh/segmentio/snippet.svg?style=svg)](https://circleci.com/gh/segmentio/snippet)
+[![Circle CI](https://circleci.com/gh/segmentio/snippet.svg?style=svg&circle-token=07550326ba99d575a07600ec4d8a9593120ef509)](https://circleci.com/gh/segmentio/snippet)
 
 # snippet
 
   Render the analytics.js snippet.
 
+  The recommended way to use analytics.js is to follow the [analytics.js quickstart guide](https://segment.com/docs/sources/website/analytics.js/quickstart/). If you absolutely need to generate a snippet dynamically, this is an alternate solution. Note that when using this in-browser, the global `analytics` object will not be defined until the snippet is rendered and executed.
+
+  This package is supported on IE8+, Chrome, Firefox, Safari 9, Microsoft Edge, Node.js 0.10+
+
+  For IE7 support, install a global `JSON` polyfill on the page prior to loading this package.
+
 ## Example
 
 ```js
-var snippet = require('snippet');
+var snippet = require('@segment/snippet');
 
 var contents = snippet.max({
   host: 'cdn.segment.com',
