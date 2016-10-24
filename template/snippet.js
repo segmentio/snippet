@@ -31,7 +31,7 @@
     'track',
     'ready',
     'alias',
-    'debug',
+    'debug', 
     'page',
     'once',
     'off',
