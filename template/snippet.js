@@ -72,7 +72,7 @@
     // Insert our script next to the first script element.
     var first = document.getElementsByTagName('script')[0];
     first.parentNode.insertBefore(script, first);
-    analytics.integrationOptions = integrationOptions;
+    analytics._integrationOptions = integrationOptions;
   };
 
   // Add a version to keep track of what's in the wild.
