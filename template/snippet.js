@@ -59,7 +59,7 @@
 
   // Define a method to load Analytics.js from our CDN,
   // and that will be sure to only ever load it once.
-  analytics.load = function(key, integrationOptions){
+  analytics.load = function(key, options){
     // Create an async script element based on your key.
     var script = document.createElement('script');
     script.type = 'text/javascript';
@@ -72,11 +72,11 @@
     // Insert our script next to the first script element.
     var first = document.getElementsByTagName('script')[0];
     first.parentNode.insertBefore(script, first);
-    analytics._integrationOptions = integrationOptions;
+    analytics._loadOptions = options;
   };
 
   // Add a version to keep track of what's in the wild.
-  analytics.SNIPPET_VERSION = '4.0.1';
+  analytics.SNIPPET_VERSION = '4.1.0';
 
   // Load Analytics.js with your key, which will automatically
   // load the tools you've enabled for your account. Boosh!
