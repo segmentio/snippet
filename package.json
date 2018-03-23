@@ -1,7 +1,7 @@
 {
   "name": "@segment/snippet",
   "author": "Segment.io <friends@segment.com>",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "repository": "git://github.com/segmentio/snippet.git",
   "description": "Templating methods for rendering the analytics.js snippet.",
   "main": "lib/index.js",
