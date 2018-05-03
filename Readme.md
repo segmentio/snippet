@@ -34,9 +34,10 @@ var contents = snippet.max({
 
   Returns the maxified version of the analytics.js snippet given a set of `options`:
 
-  * `host`: the domain name where the analytics.js script is hosted
-  * `apiKey`: the `apiKey` to load in the snippet
-  * `page`: the options to pass to `analytics.page`. if `page` is `false`, then the `page()` call will be omitted
+  * `host`: the domain name where the analytics.js script is hosted.
+  * `apiKey`: the `apiKey` to load in the snippet.
+  * `page`: the options to pass to `analytics.page`. if `page` is `false`, then the `page()` call will be omitted.
+  * `load`: if set to `false` the `load()` call will be omitted. This is useful for if you want dynamically control the load process on the client-side for things like GDPR.
 
 
 ### snippet.min(options)
