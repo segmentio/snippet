@@ -31,7 +31,7 @@
     'track',
     'ready',
     'alias',
-    'debug', 
+    'debug',
     'page',
     'once',
     'off',
@@ -80,7 +80,9 @@
 
   // Load Analytics.js with your key, which will automatically
   // load the tools you've enabled for your account. Boosh!
+  '<% if (settings.load) { %>'
   analytics.load("<%= settings.apiKey %>");
+  '<% } %>'
 
   // Make the first page call to load the integrations. If
   // you'd like to manually name or tag the page, edit or

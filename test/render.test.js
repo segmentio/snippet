@@ -31,6 +31,13 @@ describe('snippet', function() {
         'analytics.page()');
     });
 
+    it('should not include load if explicitly omitted', function() {
+      assertDoesNotContain(
+        snippet.max({ load: false }),
+        'analytics.load('
+      );
+    });
+
     it('should include page by default', function() {
       assertContains(
         snippet.max({}),
