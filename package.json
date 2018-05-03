@@ -5,6 +5,7 @@
   "repository": "git://github.com/segmentio/snippet.git",
   "description": "Templating methods for rendering the analytics.js snippet.",
   "main": "lib/index.js",
+  "license": "MIT",
   "dependencies": {
     "@ndhoule/map": "^2.0.1"
   },
