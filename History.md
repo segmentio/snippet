@@ -1,4 +1,9 @@
 
+4.3.1 / 2018-05-03
+==================
+
+  * Fix empty strings being output around the .load() call (#33).
+
 4.3.0 / 2018-05-03
 ==================
 
