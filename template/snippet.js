@@ -64,9 +64,7 @@
     var script = document.createElement('script');
     script.type = 'text/javascript';
     script.async = true;
-    script.src = ('https:' === document.location.protocol
-      ? 'https://' : 'http://')
-      + '<%= settings.host %>/analytics.js/v1/'
+    script.src = 'https://<%= settings.host %>/analytics.js/v1/'
       + key + '/analytics.min.js';
 
     // Insert our script next to the first script element.
