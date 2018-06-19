@@ -1,11 +1,11 @@
 /* eslint-env node */
 'use strict';
 
-var middleware = require('./test/middleware');
-
 module.exports = function(config) {
   config.set({
     files: [
+      // https://app.segment.com/segment-libraries/sources/snippet/settings/keys
+      'https://cdn.segment.com/analytics.js/v1/zCueSsEKipbrRgqbJarlTG8UJsAZWpkm/analytics.js',
       'test/**/*.test.js'
     ],
 
@@ -49,11 +49,8 @@ module.exports = function(config) {
       ]
     },
 
-    middleware: [ 'custom' ],
-
     plugins: [
-      'karma-*',
-      { 'middleware:custom': [ 'factory', middleware ] }
+      'karma-*'
     ]
   });
 };

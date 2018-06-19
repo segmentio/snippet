@@ -13,8 +13,8 @@ describe('snippet', function() {
 
   before(function() {
     snippet = Function(render.max({
-      apiKey: 'key',
-      host: window.location.host
+      // https://app.segment.com/segment-libraries/sources/snippet/settings/keys
+      apiKey: 'zCueSsEKipbrRgqbJarlTG8UJsAZWpkm'
     }));
   });
 
@@ -183,7 +183,7 @@ describe('snippet', function() {
 
     it('should load analytics.js from the server', function(done) {
       var id = setInterval(function() {
-        if (window.loaded) {
+        if (typeof window.analytics === 'object') {
           clearInterval(id);
           done();
         }
