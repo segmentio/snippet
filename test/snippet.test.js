@@ -145,6 +145,14 @@ describe('snippet', function() {
     it('.off', function() {
       assert(arrayContains(window.analytics.methods, 'off'));
     });
+
+    it('.addSourceMiddleware', function() {
+      assert(arrayContains(window.analytics.methods, 'addSourceMiddleware'));
+    });
+
+    it('.addDestinationMiddleware', function() {
+      assert(arrayContains(window.analytics.methods, 'addDestinationMiddleware'));
+    });
   });
 
   describe('.factory', function() {
