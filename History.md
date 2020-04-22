@@ -1,4 +1,10 @@
 
+4.5.0 / 2020-04-22
+==================
+
+  * Migrate to circle 2.0 in order to get CI build working again
+  * add addSourceMiddleware and addDestinationMiddleware to snippet
+
 4.4.0 / 2018-06-19
 ==================
 
