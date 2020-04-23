@@ -9,9 +9,6 @@
   "dependencies": {
     "@ndhoule/map": "^2.0.1"
   },
-  "scripts": {
-   "postinstall": "node scripts/build.js"
-  },
   "devDependencies": {
     "@segment/clear-env": "^2.0.3",
     "@segment/eslint-config": "^3.4.0",
