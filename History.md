@@ -1,4 +1,11 @@
 
+4.6.0 / 2020-04-23
+==================
+
+  * Revert "add post install step to satisfy app build"
+  * add post install step to satisfy app build
+  * rm -v prefix required to publish a tag
+
 4.4.0 / 2018-06-19
 ==================
 
