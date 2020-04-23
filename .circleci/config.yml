@@ -19,6 +19,7 @@ jobs:
       - image: circleci/node:8-browsers
     steps:
       - checkout
+      - run: make build
       - run: npm config set "//registry.npmjs.org/:_authToken" $NPM_AUTH
       - run: npm publish .
 
