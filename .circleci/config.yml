@@ -18,6 +18,7 @@ jobs:
     docker:
       - image: circleci/node:8-browsers
     steps:
+      - checkout
       - run: npm publish .
 
 workflows:
