@@ -37,7 +37,7 @@
     'off',
     'on',
     'addSourceMiddleware',
-    'addDestinationMiddleware'
+    'addIntegrationMiddleware'
   ];
 
   // Define a factory to create stubs. These are placeholders

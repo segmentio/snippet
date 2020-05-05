@@ -150,8 +150,8 @@ describe('snippet', function() {
       assert(arrayContains(window.analytics.methods, 'addSourceMiddleware'));
     });
 
-    it('.addDestinationMiddleware', function() {
-      assert(arrayContains(window.analytics.methods, 'addDestinationMiddleware'));
+    it('.addIntegrationMiddleware', function() {
+      assert(arrayContains(window.analytics.methods, 'addIntegrationMiddleware'));
     });
   });
 
