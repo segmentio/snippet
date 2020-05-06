@@ -1,4 +1,9 @@
 
+4.10.0 / 2020-05-06
+==================
+
+  * rename addDestinationMiddleware to addIntegrationMiddleware
+
 4.9.0 / 2020-04-23
 ==================
 
