@@ -153,6 +153,10 @@ describe('snippet', function() {
     it('.addIntegrationMiddleware', function() {
       assert(arrayContains(window.analytics.methods, 'addIntegrationMiddleware'));
     });
+
+    it('.setAnonymousId', function() {
+      assert(arrayContains(window.analytics.methods, 'setAnonymousId'));
+    });
   });
 
   describe('.factory', function() {

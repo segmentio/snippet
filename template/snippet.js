@@ -37,7 +37,8 @@
     'off',
     'on',
     'addSourceMiddleware',
-    'addIntegrationMiddleware'
+    'addIntegrationMiddleware',
+    'setAnonymousId'
   ];
 
   // Define a factory to create stubs. These are placeholders
