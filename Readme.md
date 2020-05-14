@@ -4,7 +4,7 @@
 
   Render the analytics.js snippet.
 
-  The recommended way to use analytics.js is to follow the [analytics.js quickstart guide](https://segment.com/docs/sources/website/analytics.js/quickstart/). If you absolutely need to generate a snippet dynamically, this is an alternate solution. Note that when using this in-browser, the global `analytics` object will not be defined until the snippet is rendered and executed.
+  The recommended way to use analytics.js is to follow the [analytics.js quickstart guide](https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/quickstart/). If you absolutely need to generate a snippet dynamically, this is an alternate solution. Note that when using this in-browser, the global `analytics` object will not be defined until the snippet is rendered and executed.
 
   This package is supported on IE8+, Chrome, Firefox, Safari 9, Microsoft Edge, Node.js 0.10+
 
