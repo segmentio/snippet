@@ -157,6 +157,10 @@ describe('snippet', function() {
     it('.setAnonymousId', function() {
       assert(arrayContains(window.analytics.methods, 'setAnonymousId'));
     });
+
+    it('.addDestinationMiddleware', function() {
+      assert(arrayContains(window.analytics.methods, 'addDestinationMiddleware'));
+    });
   });
 
   describe('.factory', function() {
