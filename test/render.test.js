@@ -19,6 +19,15 @@ describe('snippet', function() {
         'example.com/analytics.js/v1');
     });
 
+    it('should set the ajs path', function() {
+      assertContains(
+        snippet.max({ 
+          host: 'example.com',
+          ajsPath: '/something/else.min.js'
+        }),
+        'example.com/something/else.min.js');
+    });
+
     it('should set the api key', function() {
       assertContains(
         snippet.max({ apiKey: 'key' }),
