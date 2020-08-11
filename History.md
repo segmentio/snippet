@@ -1,3 +1,9 @@
+4.13.0 / 2020-08-11
+==================
+
+  * added ajsPath option to load from customized location
+  * updated dependencies 
+
 4.12.0 / 2020-05-21
 ==================
 
