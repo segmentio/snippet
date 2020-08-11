@@ -51,6 +51,10 @@ describe('snippet', function() {
     assert(length === scripts.length);
   });
 
+  it('should set SNIPPET_VERSION to module version', function() {
+    assert(require('../package.json').version === window.analytics.SNIPPET_VERSION)
+  })
+
   it('should warn using console.error when the snippet is included > 1', function() {
     snippet();
     var args = window.console.error.args;
