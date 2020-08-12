@@ -15,10 +15,10 @@ var lineRegex = /(<%= settings\.load %>|<%= settings\.page %>|}}\(\);)/g;
 var versionRegex = /<%= settings\.version %>/;
 var snippet = template(source.replace(loadRegex, '$1').replace(pageRegex, '$1').replace(versionRegex, packageJSON.version), { variable: 'settings' });
 var snippetMin = template(minify(source, {
-  mangle: { except: ['analytics'] },
+  mangle: { except: ['analytics', 'key'] },
   compress: { sequences: false, side_effects: false },
   fromString: true
-}).code.replace(loadRegex, '$1').replace(pageRegex, '$1').replace(lineRegex, '\n$1'), { variable: 'settings' });
+}).code.replace(loadRegex, '$1').replace(pageRegex, '$1').replace(lineRegex, '\n$1').replace(versionRegex, packageJSON.version), { variable: 'settings' });
 
 mkdirp(path.join(__dirname, '../dist'), function() {
   fs.writeFileSync(path.join(__dirname, '../dist/max.template.js'), 'module.exports=' + snippet.source);
