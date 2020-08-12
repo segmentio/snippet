@@ -1,3 +1,8 @@
+4.13.1 / 2020-08-12
+==================
+
+  * fix: minified snippet not generated correctly
+
 4.13.0 / 2020-08-11
 ==================
 
