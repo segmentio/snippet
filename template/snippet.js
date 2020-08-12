@@ -68,7 +68,7 @@
     var script = document.createElement('script');
     script.type = 'text/javascript';
     script.async = true;
-    script.src = "https://<%= settings.host %><%= settings.ajsPath %>";
+    script.src = 'https://<%= settings.host %><%= settings.ajsPath %>';
 
     // Insert our script next to the first script element.
     var first = document.getElementsByTagName('script')[0];
