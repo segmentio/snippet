@@ -6,6 +6,7 @@
   "description": "Templating methods for rendering the analytics.js snippet.",
   "main": "lib/index.js",
   "license": "MIT",
+  "typings": "./types.d.ts",
   "dependencies": {
     "@ndhoule/map": "^2.0.1"
   },
