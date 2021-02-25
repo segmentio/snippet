@@ -34,6 +34,13 @@ describe('snippet', function() {
         'analytics.load("key")');
     });
 
+    it('should set the _writekey', function() {
+      assertContains(
+        snippet.max({ apiKey: 'foo' }),
+        // eslint-disable-next-line
+        "analytics._writeKey = 'foo'");
+    });
+
     it('should not include page if explicitly omitted', function() {
       assertDoesNotContain(
         snippet.max({ page: false }),
@@ -92,6 +99,12 @@ describe('snippet', function() {
       assertContains(
         snippet.min({ apiKey: 'key' }),
         'analytics.load("key")');
+    });
+
+    it('should set the _writekey', function() {
+      assertContains(
+        snippet.min({ apiKey: 'foo' }),
+        'analytics._writeKey="foo"');
     });
 
     it('should be shorter than max', function() {
