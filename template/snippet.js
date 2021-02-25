@@ -75,6 +75,7 @@
     first.parentNode.insertBefore(script, first);
     analytics._loadOptions = options;
   };
+  analytics._writeKey = '<%= settings.apiKey %>'
 
   // Add a version to keep track of what's in the wild.
   analytics.SNIPPET_VERSION = '<%= settings.version %>';
