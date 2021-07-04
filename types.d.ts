@@ -7,6 +7,13 @@ declare module '@segment/snippet' {
         }
     }
 
+    interface LoadOptions {
+        integrations?: {
+            All?: boolean
+            [key: string]: boolean
+        }
+    }
+
     interface Options {
         /** The domain name where the analytics.js script is hosted. */
         host?: string
@@ -23,7 +30,7 @@ declare module '@segment/snippet' {
          * you want dynamically control the load process on the client-side for
          * things like GDPR.
          */
-        load?: boolean
+        load?: boolean | LoadOptions
     }
 
     /**
