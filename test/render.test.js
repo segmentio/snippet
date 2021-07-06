@@ -34,6 +34,12 @@ describe('snippet', function() {
         'analytics.load("key")');
     });
 
+    it('should set the load options', function() {
+      assertContains(
+        snippet.max({ apiKey: 'key', load: { integrations: { All: false } } }),
+        'analytics.load("key", {"integrations":{"All":false}})');
+    });
+
     it('should set the _writekey', function() {
       assertContains(
         snippet.max({ apiKey: 'foo' }),
@@ -99,6 +105,12 @@ describe('snippet', function() {
       assertContains(
         snippet.min({ apiKey: 'key' }),
         'analytics.load("key")');
+    });
+
+    it('should set the load options', function() {
+      assertContains(
+        snippet.max({ apiKey: 'key', load: { integrations: { All: false } } }),
+        'analytics.load("key", {"integrations":{"All":false}})');
     });
 
     it('should set the _writekey', function() {
