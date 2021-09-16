@@ -21,7 +21,7 @@ describe('snippet', function() {
 
     it('should set the ajs path', function() {
       assertContains(
-        snippet.max({ 
+        snippet.max({
           host: 'example.com',
           ajsPath: '/something/else.min.js'
         }),
@@ -45,6 +45,13 @@ describe('snippet', function() {
         snippet.max({ apiKey: 'foo' }),
         // eslint-disable-next-line
         "analytics._writeKey = 'foo'");
+    });
+
+    it('should set the _cdn', function() {
+      assertContains(
+        snippet.max({ host: 'example.com' }),
+        // eslint-disable-next-line
+        "analytics._cdn = 'example.com'");
     });
 
     it('should not include page if explicitly omitted', function() {
