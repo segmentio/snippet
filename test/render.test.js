@@ -21,7 +21,7 @@ describe('snippet', function() {
 
     it('should set the ajs path', function() {
       assertContains(
-        snippet.max({
+        snippet.max({ 
           host: 'example.com',
           ajsPath: '/something/else.min.js'
         }),
