@@ -1,4 +1,4 @@
-(function() {
+(function(){
 
   // Create a queue, but don't obliterate an existing one!
   var analytics = window.analytics = window.analytics || [];
@@ -46,8 +46,8 @@
   // for methods in Analytics.js so that you never have to wait
   // for it to load to actually record data. The `method` is
   // stored as the first argument, so we can replay the data.
-  analytics.factory = function(method) {
-    return function() {
+  analytics.factory = function(method){
+    return function(){
       var args = Array.prototype.slice.call(arguments);
       args.unshift(method);
       analytics.push(args);
@@ -63,7 +63,7 @@
 
   // Define a method to load Analytics.js from our CDN,
   // and that will be sure to only ever load it once.
-  analytics.load = function(key, options) {
+  analytics.load = function(key, options){
     // Create an async script element based on your key.
     var script = document.createElement('script');
     script.type = 'text/javascript';
