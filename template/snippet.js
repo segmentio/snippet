@@ -77,6 +77,8 @@
   };
   analytics._writeKey = '<%= settings.apiKey %>'
 
+  analytics._cdn = '<%= settings.host %>'
+
   // Add a version to keep track of what's in the wild.
   analytics.SNIPPET_VERSION = '<%= settings.version %>';
 

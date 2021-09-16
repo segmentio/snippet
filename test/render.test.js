@@ -47,6 +47,13 @@ describe('snippet', function() {
         "analytics._writeKey = 'foo'");
     });
 
+    it('should set the _cdn', function() {
+      assertContains(
+        snippet.max({ host: 'example.com' }),
+        // eslint-disable-next-line
+        "analytics._cdn = 'example.com'");
+    });
+
     it('should not include page if explicitly omitted', function() {
       assertDoesNotContain(
         snippet.max({ page: false }),
