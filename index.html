@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <style>
+      body {
+        font-family: monospace;
+      }
+
+      #event {
+        margin: 2em 0;
+        min-height: 500px;
+        width: 100%;
+      }
+    </style>
+
+    <script type="text/javascript">
+      import('./src/index.js').then(template => {
+        const body = template();
+
+        const script = document.createElement('script')
+        script.innerText = body
+        debugger
+      })
+    </script>
+  </head>
+</html>

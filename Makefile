@@ -13,7 +13,7 @@ _MOCHA := node_modules/.bin/_mocha
 # Files
 ##
 
-LIBS = $(shell find lib -type f -name "*.js")
+LIBS = $(shell find src -type f -name "*.js")
 TESTS = $(shell find test -type f -name "*.test.js")
 SUPPORT = $(wildcard karma.conf*.js)
 ALL_FILES = $(LIBS) $(TESTS) $(SUPPORT)
@@ -50,7 +50,7 @@ MOCHA_FLAGS := \
 # Istanbul flags.
 COVERAGE_DIR ?= coverage
 ISTANBUL_FLAGS := \
-	--root "./lib" \
+	--root "./src" \
 	--include-all-sources true \
 	--dir "$(COVERAGE_DIR)/Node $(shell node -v)"
 
