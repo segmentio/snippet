@@ -14,7 +14,8 @@ const codeStyle = `
 `
 
 const buttonStyle = `
-  padding: 15px;
+  width: 120px;
+  height: 60px;
 `
 
 const bodyStyle = `
@@ -27,33 +28,38 @@ const bodyStyle = `
   background-size: 120% 2000px,100% 2000px;
 `
 
-const buttons = `
-  <div id="buttons">
-    <button type="button" style="${buttonStyle}" id="track" onClick="window.analytics.track('hello')"> Track </button>
-    <button type="button" style="${buttonStyle}" id="identify" onClick="window.analytics.identify('hello')"> Identify </button>
-  </div>
-`
-
 const jsSnippet = max({
-  ajsPath: "",
-  apiKey: "<ADD YOUR WRITE KEY HERE>",
-  host: "cdn.segment.com"
+  // const ajsPath = aliasName ? `/${workspaceId}/${aliasName}.min.js` : ''
+  useHostForBundles: true
 })
+
+function renderButtons() {
+  const onClick = async () => {
+    const log = await window.analytics.track('hello')
+
+    const resultBox = document.createElement("div")
+    resultBox.id = 'resultBox'
+    resultBox.innerText = log.logger._logs.find(l => l.message === 'Delivered') ? 'success' : 'failed'
+    document.body.appendChild(resultBox);
+  }
+
+  const trackButton = document.createElement('button')
+  trackButton.id = 'track'
+  trackButton.style = buttonStyle
+  trackButton.innerText = 'TRACK'
+  trackButton.onclick = onClick
+  document.body.appendChild(trackButton)
+}
 
 function render() {
   // render the AJS Snippet
   const element = document.createElement('div');
-  element.setAttribute('style', codeStyle)
+  element.style = codeStyle
   element.innerHTML = jsSnippet;
 
   document.body.appendChild(element);
 
-
-  // render track and identify buttons
-  const buttonsDiv = document.createElement('div')
-  buttonsDiv.innerHTML = buttons
-
-  document.body.appendChild(buttonsDiv)
+  renderButtons()
 }
 
 function loadAJS() {
@@ -63,10 +69,12 @@ function loadAJS() {
   document.head.appendChild(script)
 
   window.analytics.ready(function onReady() {
-    console.log('ready!')
+    const ready = document.createElement('div')
+    ready.id = 'ready'
+    document.body.append(ready)
   })
 }
 
 document.body.setAttribute("style", bodyStyle)
-render()
 loadAJS()
+render()
