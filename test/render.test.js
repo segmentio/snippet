@@ -57,6 +57,16 @@ describe('snippet', function() {
         snippet.max({ host: 'example.com' }),
         // eslint-disable-next-line
         'analytics._cdn = "https://example.com"');
+
+      assertContains(
+        snippet.min({ host: 'example.com', useHostForBundles: true }),
+        // eslint-disable-next-line
+        'analytics._cdn = "https://example.com"');
+
+      assertDoesNotContain(
+        snippet.min({ host: 'example.com' }),
+        // eslint-disable-next-line
+        'analytics._cdn = "https://example.com"');
     });
 
     it('should not include page if explicitly omitted', function() {
