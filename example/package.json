@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack --watch",
-    "start": "webpack serve --open",
+    "start": "webpack serve",
     "dev": "NODE_ENV=development concurrently \"webpack serve\" \"webpack -c webpack.config.js --watch\""
   },
   "keywords": [],
