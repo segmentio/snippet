@@ -31,6 +31,11 @@ declare module '@segment/snippet' {
          * things like GDPR.
          */
         load?: boolean | LoadOptions
+        /**
+         * If useHostForBundles is set, the snippet will include the `_cdn` property
+         * to tell Analytics JS where to fetch bundles from.
+         */
+        useHostForBundles?: boolean
     }
 
     /**
