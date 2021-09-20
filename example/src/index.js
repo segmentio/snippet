@@ -28,9 +28,17 @@ const bodyStyle = `
   background-size: 120% 2000px,100% 2000px;
 `
 
+const apiKey = process.env.WRITE_KEY
+const host = process.env.HOST
+const aliasName = process.env.ALIAS_NAME
+const workspaceId = process.env.WORKSPACE_ID
+const ajsPath = aliasName ? `/${workspaceId}/${aliasName}.min.js` : ''
+
 const jsSnippet = max({
-  // const ajsPath = aliasName ? `/${workspaceId}/${aliasName}.min.js` : ''
-  useHostForBundles: true
+  ajsPath,
+  apiKey,
+  host,
+  useHostForBundles: ajsPath !== "" && host !== ""
 })
 
 function renderButtons() {
