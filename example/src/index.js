@@ -34,7 +34,7 @@ const aliasName = process.env.ALIAS_NAME
 const workspaceId = process.env.WORKSPACE_ID
 const ajsPath = aliasName ? `/${workspaceId}/${aliasName}.min.js` : ''
 
-const jsSnippet = max({
+const jsSnippet = min({
   ajsPath,
   apiKey,
   host,
