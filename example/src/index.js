@@ -38,7 +38,7 @@ const jsSnippet = max({
   ajsPath,
   apiKey,
   host,
-  useHostForBundles: ajsPath !== "" && host !== ""
+  useHostForBundles: host !== "" && host !== 'cdn.segment.com'
 })
 
 function renderButtons() {
