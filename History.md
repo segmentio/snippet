@@ -1,3 +1,36 @@
+
+
+4.15.3 / 2021-09-16
+==================
+  * Add `useHostForBundles` [#78](https://github.com/segmentio/snippet/pull/78) and `optionalCDN` [#76](https://github.com/segmentio/snippet/pull/76) properties to allow flexible configuration of custom proxies for those customers using AJS 2.0 
+  * Adding an example app for testing [#74](https://github.com/segmentio/snippet/pull/74) & [#75](https://github.com/segmentio/snippet/pull/75)
+
+
+4.15.0 / 2021-09-16
+==================
+  * Add a `_cdn` property [#73](https://github.com/segmentio/snippet/pull/73)
+
+
+4.14.2 / 2021-07-6
+==================
+  * Add load options to the snippet generator [#66](https://github.com/segmentio/snippet/pull/66) 
+
+
+4.14.1 / 2021-07-5
+==================
+  * Dependency upgrades [#53](https://github.com/segmentio/snippet/pull/53) 
+
+
+4.14.0 / 2021-06-30
+==================
+  * Add Typescript definitions [#55](https://github.com/segmentio/snippet/pull/55)
+
+
+4.13.2 / 2021-02-25
+==================
+  * Add `_writeKey` property to the snippet [#58](https://github.com/segmentio/snippet/pull/58)
+
+
 4.13.1 / 2020-08-12
 ==================
 
