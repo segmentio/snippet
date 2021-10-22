@@ -1,6 +1,6 @@
 
 
-4.15.3 / 2021-09-16
+4.15.3 / 2021-09-20
 ==================
   * Add `useHostForBundles` [#78](https://github.com/segmentio/snippet/pull/78) and `optionalCDN` [#76](https://github.com/segmentio/snippet/pull/76) properties to allow flexible configuration of custom proxies for those customers using AJS 2.0 
   * Adding an example app for testing [#74](https://github.com/segmentio/snippet/pull/74) & [#75](https://github.com/segmentio/snippet/pull/75)
