@@ -9,7 +9,6 @@ declare module '@segment/snippet' {
 
     interface LoadOptions {
         integrations?: {
-            All?: boolean
             [key: string]: boolean
         }
     }
