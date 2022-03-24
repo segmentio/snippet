@@ -13,9 +13,7 @@
     "e2e-tests": "yarn jest --runTestsByPath --forceExit e2e-tests/*",
     "e2e": "yarn build && start-server-and-test example http://localhost:8080 e2e-tests"
   },
-  "dependencies": {
-    "@ndhoule/map": "^2.0.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@segment/clear-env": "^2.0.3",
     "@segment/eslint-config": "^3.4.0",

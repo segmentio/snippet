@@ -533,13 +533,6 @@
   resolved "https://registry.yarnpkg.com/@ndhoule/keys/-/keys-2.0.0.tgz#3d64ae677c65a261747bf3a457c62eb292a4e0ce"
   integrity sha1-PWSuZ3xlomF0e/OkV8YuspKk4M4=
 
-"@ndhoule/map@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@ndhoule/map/-/map-2.0.1.tgz#f5ca0a47424ea67f46e2a6d499b9e9bc886aefa8"
-  integrity sha1-9coKR0JOpn9G4qbUmbnpvIhq76g=
-  dependencies:
-    "@ndhoule/each" "^2.0.1"
-
 "@segment/clear-ajax@^1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@segment/clear-ajax/-/clear-ajax-1.0.2.tgz#614c53a9e1bc69d38dd0b6aedbb1e86c3b86b59b"
