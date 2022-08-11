@@ -39,7 +39,10 @@
     'addSourceMiddleware',
     'addIntegrationMiddleware',
     'setAnonymousId',
-    'addDestinationMiddleware'
+    'addDestinationMiddleware',
+    'screen',
+    'register',
+    'deregister'
   ];
 
   // Define a factory to create stubs. These are placeholders
