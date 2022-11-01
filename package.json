@@ -39,7 +39,7 @@
     "lodash": "^4.15.0",
     "matcha": "^0.7.0",
     "mkdirp": "^0.5.1",
-    "mocha": "~1.12.1",
+    "mocha": "~10.1.0",
     "sinon": "^1.17.5",
     "start-server-and-test": "^1.14.0",
     "ts-jest": "^27.0.5",
