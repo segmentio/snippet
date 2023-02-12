@@ -45,6 +45,6 @@
     "ts-jest": "^27.0.5",
     "typescript": "^4.4.3",
     "uglify-js": "^2.8.29",
-    "webdriverio": "^7.12.5"
+    "webdriverio": "^8.3.5"
   }
 }
