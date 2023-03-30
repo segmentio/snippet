@@ -50,6 +50,9 @@
     return function(){
       var args = Array.prototype.slice.call(arguments);
       args.unshift(method);
+      if (window.analytics.initialize) {
+        return window.analytics[e].apply(window.analytics, arguments);
+      }
       analytics.push(args);
       return analytics;
     };
