@@ -50,7 +50,7 @@
     return function(){
       var args = Array.prototype.slice.call(arguments);
       args.unshift(method);
-      if (window.analytics.initialize) {
+      if (window.analytics.initialized) {
         // Sometimes users assigned analytics to a variable before analytics is done loading, resulting in a stale reference.
         // If so, proxy any calls to the 'real' analytics instance.
         return window.analytics[method].apply(window.analytics, arguments);
