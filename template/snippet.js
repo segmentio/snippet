@@ -53,7 +53,7 @@
       if (window.analytics.initialize) {
         // Sometimes users assigned analytics to a variable before analytics is done loading, resulting in a stale reference.
         // If so, proxy any calls to the 'real' analytics instance.
-        return window.analytics[e].apply(window.analytics, arguments);
+        return window.analytics[method].apply(window.analytics, arguments);
       }
       analytics.push(args);
       return analytics;
