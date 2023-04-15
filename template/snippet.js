@@ -48,6 +48,11 @@
   // stored as the first argument, so we can replay the data.
   analytics.factory = function(method){
     return function(){
+      if (window.analytics.initialized) {
+        // Sometimes users assigned analytics to a variable before analytics is done loading, resulting in a stale reference.
+        // If so, proxy any calls to the 'real' analytics instance.
+        return window.analytics[method].apply(window.analytics, arguments);
+      }
       var args = Array.prototype.slice.call(arguments);
       args.unshift(method);
       analytics.push(args);
