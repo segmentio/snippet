@@ -19,7 +19,10 @@ module.exports = function(config) {
     frameworks: ['browserify', 'mocha'],
 
     reporters: ['spec'],
-
+    
+    preprocessors: {
+      'test/**/*.js': ['browserify']
+    },
     client: {
       mocha: {
         grep: process.env.GREP,

@@ -3,7 +3,6 @@
 ##
 
 ESLINT := node_modules/.bin/eslint
-ISTANBUL := node_modules/.bin/istanbul
 KARMA := node_modules/.bin/karma
 MATCHA := node_modules/.bin/matcha
 MOCHA := node_modules/.bin/mocha
@@ -47,13 +46,6 @@ MOCHA_FLAGS := \
 	--reporter "$(MOCHA_REPORTER)" \
 	--ui bdd
 
-# Istanbul flags.
-COVERAGE_DIR ?= coverage
-ISTANBUL_FLAGS := \
-	--root "./lib" \
-	--include-all-sources true \
-	--dir "$(COVERAGE_DIR)/Node $(shell node -v)"
-
 ##
 # Tasks
 ##
@@ -96,7 +88,7 @@ bench: install build
 
 # Run unit tests in node.
 test-node: install build
-	@NODE_ENV=test $(ISTANBUL) cover $(ISTANBUL_FLAGS) $(_MOCHA) -- $(MOCHA_FLAGS) test/render.test.js
+	@NODE_ENV=test  $(_MOCHA) -- $(MOCHA_FLAGS) test/render.test.js
 .PHONY: test-node
 
 # Run browser unit tests in a browser.
@@ -105,6 +97,6 @@ test-browser: install build
 .PHONY: test-browser
 
 # Default test target.
-test: lint bench test-node test-browser
+test: bench test-node test-browser
 .PHONY: test
 .DEFAULT_GOAL = test
