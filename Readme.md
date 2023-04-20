@@ -6,16 +6,22 @@ Render the analytics.js snippet.
 
 The recommended way to use analytics.js is to follow the [analytics.js quickstart guide](https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/quickstart/). If you absolutely need to generate a snippet dynamically, this is an alternate solution. Note that when using this in-browser, the global `analytics` object will not be defined until the snippet is rendered and executed.
 
-This package is supported on IE8+, Chrome, Firefox, Safari 9, Microsoft Edge, Node.js 0.10+
+For information on browser support, see: https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/supported-browsers/
 
-For IE7 support, install a global `JSON` polyfill on the page prior to loading this package.
+## Installation
+```sh
+# npm
+npm install @segment/snippet
 
+# yarn
+yarn add @segment/snippet
+```
 ## Example
 
 ```js
-var snippet = require('@segment/snippet');
+const snippet = require('@segment/snippet');
 
-var contents = snippet.max({
+const contents = snippet.max({
   host: 'cdn.segment.com',
   apiKey: '03fwkuu3',
   page: {
