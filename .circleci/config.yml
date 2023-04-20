@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:8-browsers
+      - image: circleci/node:14-browsers
     steps:
       - checkout
       - run: npm config set "//registry.npmjs.org/:_authToken" $NPM_AUTH
@@ -16,7 +16,7 @@ jobs:
       TEST_REPORTS_DIR: $CIRCLE_TEST_REPORTS
   publish:
     docker:
-      - image: circleci/node:8-browsers
+      - image: circleci/node:14-browsers
     steps:
       - checkout
       - run: make build
