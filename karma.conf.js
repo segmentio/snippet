@@ -18,11 +18,7 @@ module.exports = function(config) {
 
     frameworks: ['browserify', 'mocha'],
 
-    reporters: ['spec', 'coverage'],
-
-    preprocessors: {
-      'test/**/*.js': 'browserify'
-    },
+    reporters: ['spec'],
 
     client: {
       mocha: {
