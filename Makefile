@@ -60,7 +60,7 @@ ISTANBUL_FLAGS := \
 
 # Install node modules.
 node_modules: package.json $(wildcard node_modules/*/package.json)
-	@npm install
+	@npm ci
 	@touch $@
 
 # Install dependencies.

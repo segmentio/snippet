@@ -51,3 +51,13 @@ Returns the maxified version of the analytics.js snippet given a set of `options
 ### snippet.min(options)
 
 Returns the minified version of the snippet.
+
+
+## Development
+# Install
+```
+make install && make build
+```
+# Run tests:
+```
+make test-browser
