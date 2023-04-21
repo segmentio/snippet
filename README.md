@@ -54,10 +54,19 @@ Returns the minified version of the snippet.
 
 
 ## Development
-# Install
+
+### Installation + Running Tests
 ```
-make install && make build
+nvm use
+make install 
+make test
 ```
-# Run tests:
+
+## Publishing to `npm`
 ```
-make test-browser
+git co master
+make build
+npm version <patch|minor|major>
+git push --follow-tags
+npm publish
+```
