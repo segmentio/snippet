@@ -58,7 +58,7 @@ module.exports = function(config) {
 
     reporters: ['progress', 'junit', 'coverage'],
 
-    browsers: ['PhantomJS'].concat(Object.keys(customLaunchers)),
+    browsers: Object.keys(customLaunchers),
 
     customLaunchers: customLaunchers,
 
