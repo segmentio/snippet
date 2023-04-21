@@ -6,10 +6,8 @@ jobs:
     steps:
       - checkout
       - run: npm config set "//registry.npmjs.org/:_authToken" $NPM_AUTH
-      - run: sudo npm -g install codecov
       - run: make install
       - run: make test
-      - run: codecov
     environment:
       NPM_CONFIG_PROGRESS: false
       NPM_CONFIG_SPIN: false
