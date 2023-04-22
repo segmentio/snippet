@@ -1,5 +1,3 @@
-[![Circle CI](https://circleci.com/gh/segmentio/snippet.svg?style=svg&circle-token=07550326ba99d575a07600ec4d8a9593120ef509)](https://circleci.com/gh/segmentio/snippet)
-
 # snippet
 
 Render the analytics.js snippet.
