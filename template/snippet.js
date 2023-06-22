@@ -60,6 +60,7 @@
     };
   };
 
+
   // For each of our methods, generate a queueing stub.
   for (var i = 0; i < analytics.methods.length; i++) {
     var key = analytics.methods[i];
