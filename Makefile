@@ -32,10 +32,10 @@ ifdef BROWSERS
 KARMA_FLAGS += --browsers $(BROWSERS)
 endif
 
-ifdef CI
-KARMA_CONF ?= karma.conf.ci.js
+ifeq ($(SAUCE), true)
+	KARMA_CONF ?= karma.conf.sauce.js
 else
-KARMA_CONF ?= karma.conf.js
+	KARMA_CONF ?= karma.conf.js
 endif
 
 # Mocha flags.
@@ -52,7 +52,7 @@ MOCHA_FLAGS := \
 
 # Install node modules.
 node_modules: package.json $(wildcard node_modules/*/package.json)
-	@npm ci
+	yarn install --immutable
 	@touch $@
 
 # Install dependencies.
@@ -88,11 +88,13 @@ bench: install build
 
 # Run unit tests in node.
 test-node: install build
+	@echo "-> Mocha: render.test.js"
 	@NODE_ENV=test  $(_MOCHA) -- $(MOCHA_FLAGS) test/render.test.js
 .PHONY: test-node
 
 # Run browser unit tests in a browser.
 test-browser: install build
+	@echo "-> Karma: start..."
 	@$(KARMA) start $(KARMA_FLAGS) $(KARMA_CONF)
 .PHONY: test-browser
 
