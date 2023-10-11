@@ -88,11 +88,13 @@ bench: install build
 
 # Run unit tests in node.
 test-node: install build
+	@echo "-> Mocha: render.test.js"
 	@NODE_ENV=test  $(_MOCHA) -- $(MOCHA_FLAGS) test/render.test.js
 .PHONY: test-node
 
 # Run browser unit tests in a browser.
 test-browser: install build
+	@echo "-> Karma: start..."
 	@$(KARMA) start $(KARMA_FLAGS) $(KARMA_CONF)
 .PHONY: test-browser
 
