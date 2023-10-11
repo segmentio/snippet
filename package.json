@@ -46,5 +46,6 @@
     "uglify-js": "^2.8.29",
     "watchify": "^3.11.1",
     "webdriverio": "^7.12.5"
-  }
+  },
+  "packageManager": "yarn@3.6.4"
 }
