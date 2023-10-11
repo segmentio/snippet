@@ -56,7 +56,7 @@ Returns the minified version of the snippet.
 ### Installation + Running Tests
 ```
 nvm use
-make install
+yarn install
 make test
 ```
 
