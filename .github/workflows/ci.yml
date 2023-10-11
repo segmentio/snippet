@@ -1,0 +1,25 @@
+name: CI
+on:
+  push:
+env:
+  HUSKY: 0
+  PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+  NPM_CONFIG_PROGRESS: false
+  NPM_CONFIG_SPIN: false
+jobs:
+  qa:
+    name: QA (Node.js v${{ matrix.node-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 14 ]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+      - run: npm ci
+      - run: make test
+
+
