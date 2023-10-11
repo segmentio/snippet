@@ -52,7 +52,7 @@ MOCHA_FLAGS := \
 
 # Install node modules.
 node_modules: package.json $(wildcard node_modules/*/package.json)
-	yarn install
+	yarn install --immutable
 	@touch $@
 
 # Install dependencies.
