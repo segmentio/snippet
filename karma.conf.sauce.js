@@ -49,8 +49,9 @@ module.exports = function(config) {
 
   if (!process.env.SAUCE_USERNAME || !process.env.SAUCE_ACCESS_KEY) {
     // thrown error is not surfaced
-    console.error('SAUCE_USERNAME and SAUCE_ACCESS_KEY environment variables are required but are missing')
-    process.exit(1)
+    /* eslint-disable no-console */
+    console.error('SAUCE_USERNAME and SAUCE_ACCESS_KEY environment variables are required but are missing');
+    process.exit(1);
   }
 
   config.set({
