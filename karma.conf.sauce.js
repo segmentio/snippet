@@ -45,10 +45,12 @@ var customLaunchers = {
 };
 
 module.exports = function(config) {
-  baseConfig(config);
+  baseConfig(config)
 
   if (!process.env.SAUCE_USERNAME || !process.env.SAUCE_ACCESS_KEY) {
-    throw new Error('SAUCE_USERNAME and SAUCE_ACCESS_KEY environment variables are required but are missing');
+    // thrown error is not surfaced
+    console.error('SAUCE_USERNAME and SAUCE_ACCESS_KEY environment variables are required but are missing')
+    process.exit(1)
   }
 
   config.set({
