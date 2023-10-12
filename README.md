@@ -42,7 +42,7 @@ Returns the maxified version of the analytics.js snippet given a set of `options
 * `useHostForBundles`: If set to `true`, the snippet will include the `_cdn` property to tell analytics.js where to fetch bundles from.
 * `apiKey`: the `apiKey` to load in the snippet.
 * `page`: the options to pass to `analytics.page`. if `page` is `false`, then the `page()` call will be omitted.
-* `load`: If object, these are the settings passed as the second argument to analytics.load. This can be useful if you want to override Segment.io integration behavior, or if you want dynamically control which integraions load on the client-side for things like GDPR. If set to `false` the `load()` call will be omitted. 
+* `load`: If object, these are the settings passed as the second argument to analytics.load. This can be useful if you want to override Segment.io integration behavior, or if you want dynamically control which integraions load on the client-side for things like GDPR. If set to `false` the `load()` call will be omitted.
 * `ajsPath`: override the default analytics.min.js location
 
 
@@ -56,8 +56,13 @@ Returns the minified version of the snippet.
 ### Installation + Running Tests
 ```
 nvm use
-make install 
+yarn install
 make test
+```
+
+### Running tests in Saucelabs
+```
+SAUCE=true make test
 ```
 
 ## Publishing to `npm`

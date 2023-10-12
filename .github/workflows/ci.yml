@@ -1,0 +1,24 @@
+name: CI
+on:
+  push:
+env:
+  HUSKY: 0
+  NPM_CONFIG_PROGRESS: false
+  NPM_CONFIG_SPIN: false
+jobs:
+  qa:
+    name: QA (Node.js v${{ matrix.node-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 14 ]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "yarn"
+      - run: make install
+      - run: make test # SAUCE=true disabled for now since we need a new key
+
+
