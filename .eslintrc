@@ -1,3 +1,4 @@
 {
+  "root": true,
   "extends": "@segment/eslint-config/browser/legacy"
 }

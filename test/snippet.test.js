@@ -10,7 +10,17 @@ describe('snippet', function() {
   var sandbox;
   var origConsole;
   var origError;
-
+  
+  var bufferedPageContext = {
+    __t: 'bpc', 
+    c: undefined, 
+    p: '/context.html', 
+    u: 'http://localhost:9876/context.html', 
+    s: '', 
+    t: '', 
+    r: document.referrer
+  };
+  
   before(function() {
     snippet = Function(render.max({
       // https://app.segment.com/segment-libraries/sources/snippet/settings/keys
@@ -85,8 +95,20 @@ describe('snippet', function() {
 
   describe('.page', function() {
     it('should call .page by default', function() {
-      assert.deepEqual(window.analytics[0], ['page']);
+      assert.strictEqual(window.analytics[0][0], 'page');
     });
+  });
+
+  describe('bufferedPageContext', function() {
+    ['track', 'screen', 'alias', 'group', 'page', 'identify'].forEach(
+      function(method) {
+        it(method + ' should have a buffered page context', function() {
+          window.analytics[method]('foo');
+          var lastCall = window.analytics[window.analytics.length - 1];
+          assert.deepStrictEqual(lastCall, [method, 'foo', bufferedPageContext]);
+        });
+      }
+    );
   });
 
   describe('.methods', function() {
@@ -164,6 +186,14 @@ describe('snippet', function() {
 
     it('.addDestinationMiddleware', function() {
       assert(arrayContains(window.analytics.methods, 'addDestinationMiddleware'));
+    });
+    
+    it('.screen', function() {
+      assert(arrayContains(window.analytics.methods, 'screen'));
+    });
+
+    it('.register', function() {
+      assert(arrayContains(window.analytics.methods, 'register'));
     });
   });
 

@@ -33,14 +33,30 @@
     'alias',
     'debug',
     'page',
+    'screen',
     'once',
     'off',
     'on',
     'addSourceMiddleware',
     'addIntegrationMiddleware',
     'setAnonymousId',
-    'addDestinationMiddleware'
+    'addDestinationMiddleware',
+    'register'
   ];
+
+  // create buffered page context object
+  function p() {
+    var c = document.querySelector("link[rel='canonical']");
+    return {
+      __t: 'bpc',
+      c: (c && c.getAttribute('href')) || undefined,
+      p: location.pathname,
+      u: location.href,
+      s: location.search,
+      t: document.title,
+      r: document.referrer,
+    }
+  }
 
   // Define a factory to create stubs. These are placeholders
   // for methods in Analytics.js so that you never have to wait
@@ -54,6 +70,10 @@
         return window.analytics[e].apply(window.analytics, arguments);
       }
       var args = Array.prototype.slice.call(arguments);
+      // Add buffered page context object so page information is always up-to-date
+      if (['track', 'screen', 'alias', 'group', 'page', 'identify'].indexOf(e) > -1) {
+        args.push(p());
+      }
       args.unshift(e);
       analytics.push(args);
       return analytics;
