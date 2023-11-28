@@ -33,13 +33,15 @@
     'alias',
     'debug',
     'page',
+    'screen',
     'once',
     'off',
     'on',
     'addSourceMiddleware',
     'addIntegrationMiddleware',
     'setAnonymousId',
-    'addDestinationMiddleware'
+    'addDestinationMiddleware',
+    'register'
   ];
 
   // create buffered page context object
