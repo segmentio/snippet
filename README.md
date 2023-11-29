@@ -67,9 +67,9 @@ SAUCE=true make test
 
 ## Publishing to `npm`
 ```
-git co master
-make build
+git co master && git pull --ff-only
 npm version <patch|minor|major>
 git push --follow-tags
+make build
 npm publish
 ```
