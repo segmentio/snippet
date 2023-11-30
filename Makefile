@@ -42,7 +42,6 @@ endif
 GREP ?= .
 MOCHA_REPORTER ?= spec
 MOCHA_FLAGS := \
-	--grep "$(GREP)" \
 	--reporter "$(MOCHA_REPORTER)" \
 	--ui bdd
 
@@ -62,6 +61,11 @@ build: install
 	@node scripts/build.js
 .PHONY: build
 
+
+fixture: install build
+	@node scripts/fixture.js
+.PHONY: fixture
+
 # Remove temporary files and build artifacts.
 clean:
 	rm -rf *.log coverage
@@ -74,7 +78,7 @@ distclean: clean
 
 # Lint JavaScript source files.
 lint: install build
-	@$(ESLINT) $(ALL_FILES)
+	@$(ESLINT) template/** lib/** scripts/** test/**
 .PHONY: lint
 
 # Attempt to fix linting errors.

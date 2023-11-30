@@ -15,6 +15,8 @@
   "scripts": {
     "build": "rm -rf ./dist && make build",
     "test": "make test",
+    "fixture": "make fixture",
+    "lint": "make lint",
     "example": "cd ./example && yarn start",
     "e2e-tests": "yarn jest --runTestsByPath --forceExit e2e-tests/*",
     "e2e": "yarn build && start-server-and-test example http://localhost:8080 e2e-tests"
