@@ -53,10 +53,11 @@ Returns the minified version of the snippet.
 
 ## Development
 
-### Installation + Running Tests
+### Installation + QA
 ```
 nvm use
 yarn install
+make lint
 make test
 ```
 
@@ -65,7 +66,8 @@ make test
 SAUCE=true make test
 ```
 
-## Publishing to `npm`
+## Releasing a new version
+1. Publish to `npm`
 ```
 git co master && git pull --ff-only
 npm version <patch|minor|major>
@@ -73,3 +75,5 @@ git push --follow-tags
 make build
 npm publish
 ```
+2. Create a new github release
+https://github.com/segmentio/snippet/releases
