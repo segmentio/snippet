@@ -2,7 +2,7 @@
   "extends": "@segment/eslint-config/browser/legacy",
   "rules": {
     "semi": "off", // ejs template warning
-    "quotes": ["error", "single"],
+    "quotes": ["error", "double"],
     "strict": "off",
     "no-multiple-empty-lines": ["error", { "max": 2, "maxBOF": 0 }], // no empty lines at beginning of file
     "eol-last": ["error", "never"], // no empty lines at end
