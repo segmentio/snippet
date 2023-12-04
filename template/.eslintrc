@@ -6,6 +6,7 @@
     "strict": "off",
     "no-multiple-empty-lines": ["error", { "max": 2, "maxBOF": 0 }], // no empty lines at beginning of file
     "eol-last": ["error", "never"], // no empty lines at end
-    "no-console": ["error", { "allow": ["warn", "error"] }]
+    "no-console": ["error", { "allow": ["warn", "error"] }],
+    "wrap-iife": ["error", "inside"]
   }
 }

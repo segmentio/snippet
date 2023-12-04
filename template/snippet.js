@@ -112,4 +112,4 @@
   // you'd like to manually name or tag the page, edit or
   // move this call however you'd like.
   '<%= settings.page %>'
-}());
+})();
