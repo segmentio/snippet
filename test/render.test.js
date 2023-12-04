@@ -44,7 +44,7 @@ describe('snippet', function() {
       assertContains(
         snippet.max({ apiKey: 'foo' }),
         // eslint-disable-next-line
-        "analytics._writeKey = 'foo'");
+        "analytics._writeKey = \"foo\"");
     });
 
     it('should set the _cdn if useHostForBundles is true', function() {

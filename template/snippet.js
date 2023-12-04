@@ -8,7 +8,7 @@
   // If the snippet was invoked already show an error.
   if (analytics.invoked) {
     if (window.console && console.error) {
-      console.error('Segment snippet included twice.');
+      console.error("Segment snippet included twice.");
     }
     return;
   }
@@ -19,28 +19,28 @@
 
   // A list of the methods in Analytics.js to stub.
   analytics.methods = [
-    'trackSubmit',
-    'trackClick',
-    'trackLink',
-    'trackForm',
-    'pageview',
-    'identify',
-    'reset',
-    'group',
-    'track',
-    'ready',
-    'alias',
-    'debug',
-    'page',
-    'screen',
-    'once',
-    'off',
-    'on',
-    'addSourceMiddleware',
-    'addIntegrationMiddleware',
-    'setAnonymousId',
-    'addDestinationMiddleware',
-    'register'
+    "trackSubmit",
+    "trackClick",
+    "trackLink",
+    "trackForm",
+    "pageview",
+    "identify",
+    "reset",
+    "group",
+    "track",
+    "ready",
+    "alias",
+    "debug",
+    "page",
+    "screen",
+    "once",
+    "off",
+    "on",
+    "addSourceMiddleware",
+    "addIntegrationMiddleware",
+    "setAnonymousId",
+    "addDestinationMiddleware",
+    "register"
   ];
 
   // Define a factory to create stubs. These are placeholders
@@ -57,11 +57,11 @@
       var args = Array.prototype.slice.call(arguments);
       
       // Add buffered page context object so page information is always up-to-date
-      if (['track', 'screen', 'alias', 'group', 'page', 'identify'].indexOf(e) > -1) {
-        var c = document.querySelector('link[rel=\'canonical\']');
+      if (["track", "screen", "alias", "group", "page", "identify"].indexOf(e) > -1) {
+        var c = document.querySelector("link[rel='canonical']");
         args.push({
-          __t: 'bpc',
-          c: c && c.getAttribute('href') || undefined,
+          __t: "bpc",
+          c: c && c.getAttribute("href") || undefined,
           p: location.pathname,
           u: location.href,
           s: location.search,
@@ -87,29 +87,29 @@
   // and that will be sure to only ever load it once.
   analytics.load = function(key, options) {
     // Create an async script element based on your key.
-    var t = document.createElement('script');
-    t.type = 'text/javascript';
+    var t = document.createElement("script");
+    t.type = "text/javascript";
     t.async = true;
-    t.src = 'https://<%= settings.host %><%= settings.ajsPath %>';
+    t.src = "https://<%= settings.host %><%= settings.ajsPath %>";
 
     // Insert our script next to the first script element.
-    var first = document.getElementsByTagName('script')[0];
+    var first = document.getElementsByTagName("script")[0];
     first.parentNode.insertBefore(t, first);
     analytics._loadOptions = options;
   };
-  analytics._writeKey = '<%= settings.apiKey %>';
+  analytics._writeKey = "<%= settings.apiKey %>";
 
-  '<%= settings.optionalCDN %>'
+  "<%= settings.optionalCDN %>"
 
   // Add a version to keep track of what's in the wild.
-  analytics.SNIPPET_VERSION = '<%= settings.version %>';
+  analytics.SNIPPET_VERSION = "<%= settings.version %>";
 
   // Load Analytics.js with your key, which will automatically
   // load the tools you've enabled for your account. Boosh!
-  '<%= settings.load %>'
+  "<%= settings.load %>"
 
   // Make the first page call to load the integrations. If
   // you'd like to manually name or tag the page, edit or
   // move this call however you'd like.
-  '<%= settings.page %>'
+  "<%= settings.page %>"
 })();
