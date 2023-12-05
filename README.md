@@ -77,3 +77,7 @@ npm publish
 ```
 2. Create a new github release
 https://github.com/segmentio/snippet/releases
+
+3. Bump package version on [app repo](https://github.com/segmentio/app)
+
+4. Update snippet on [public docs repo](https://github.com/segmentio/docs) (search + replace)
