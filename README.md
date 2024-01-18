@@ -1,4 +1,4 @@
-# snippet
+# @segment/snippet
 
 Render the analytics.js snippet.
 
@@ -13,6 +13,9 @@ npm install @segment/snippet
 
 # yarn
 yarn add @segment/snippet
+
+# pnpm
+pnpm add @segment/snippet
 ```
 ## Example
 
@@ -66,18 +69,19 @@ make test
 SAUCE=true make test
 ```
 
-## Releasing a new version
+## Releasing
 1. Publish to `npm`
-```
-git co master && git pull --ff-only
+```sh
+git checkout master && git pull --ff-only
 npm version <patch|minor|major>
 git push --follow-tags
 make build
 npm publish
 ```
-2. Create a new github release
-https://github.com/segmentio/snippet/releases
+2. Create a [new github release](https://github.com/segmentio/snippet/releases).
 
-3. Bump package version on [app repo](https://github.com/segmentio/app)
+3. Bump package version on [segmentio/app](https://github.com/segmentio/app/blob/main/packages/app/package.json).
 
-4. Update snippet on [public docs repo](https://github.com/segmentio/docs) (search + replace)
+4. Update _all_ example snippets on [public docs repo](https://github.com/segmentio/segment-docs) via search + replace 
+- Get example snippet by runnings `yarn fixture` and observing generated `tmp.fixture.*.js` files. 
+- Tip: double-check that the fixture's `SNIPPET_VERSION` refers to the new npm version.
