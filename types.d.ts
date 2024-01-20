@@ -35,6 +35,12 @@ declare module '@segment/snippet' {
          * to tell Analytics JS where to fetch bundles from.
          */
         useHostForBundles?: boolean
+
+        /**
+         * They key at which the global Analytics object will become accessible on the
+         * window namespace
+         */
+        globalAnalyticsKey?: string
     }
 
     /**
