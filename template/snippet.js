@@ -1,10 +1,10 @@
 (function() {
   // define the key where the global analytics object will be accessible
   // customers can safely set this to be something else if need be
-  var globalAnalyticsKey = "<%= settings.globalAnalyticsKey %>"
+  var i = "<%= settings.globalAnalyticsKey %>"
 
   // Create a queue, but don't obliterate an existing one!
-  var analytics = window[globalAnalyticsKey] = window[globalAnalyticsKey] || [];
+  var analytics = window[i] = window[i] || [];
 
   // If the real analytics.js is already on the page return.
   if (analytics.initialize) return;
@@ -53,10 +53,10 @@
   // stored as the first argument, so we can replay the data.
   analytics.factory = function(e) {
     return function() {
-      if (window[globalAnalyticsKey].initialized) {
+      if (window[i].initialized) {
         // Sometimes users assigned analytics to a variable before analytics is done loading, resulting in a stale reference.
         // If so, proxy any calls to the 'real' analytics instance.
-        return window[globalAnalyticsKey][e].apply(window[globalAnalyticsKey], arguments);
+        return window[i][e].apply(window[i], arguments);
       }
       var args = Array.prototype.slice.call(arguments);
       
@@ -82,8 +82,8 @@
 
 
   // For each of our methods, generate a queueing stub.
-  for (var i = 0; i < analytics.methods.length; i++) {
-    var key = analytics.methods[i];
+  for (var j = 0; j < analytics.methods.length; j++) {
+    var key = analytics.methods[j];
     analytics[key] = analytics.factory(key);
   }
 
@@ -94,7 +94,7 @@
     var t = document.createElement("script");
     t.type = "text/javascript";
     t.async = true;
-    t.setAttribute("data-global-segment-analytics-key", globalAnalyticsKey)
+    t.setAttribute("data-global-segment-analytics-key", i)
     t.src = "https://<%= settings.host %><%= settings.ajsPath %>";
 
     // Insert our script next to the first script element.
