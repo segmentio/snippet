@@ -16,7 +16,7 @@ var lineRegex = /(<%= settings\.load %>|<%= settings\.page %>|}}\(\);)/g;
 var versionRegex = /<%= settings\.version %>/;
 var snippet = template(source.replace(optionalCDNRegex, '$1').replace(loadRegex, '$1').replace(pageRegex, '$1').replace(versionRegex, packageJSON.version), { variable: 'settings' });
 var snippetMin = template(minify(source, {
-  mangle: { except: ['analytics', 'key', 't', 'e', 'p', 'c'] },
+  mangle: { except: ['analytics', 'key', 't', 'e', 'p', 'c', 'i'],  },
   compress: { sequences: false, side_effects: false,  },
   fromString: true
 }).code.replace(optionalCDNRegex, '$1').replace(loadRegex, '$1').replace(pageRegex, '$1').replace(lineRegex, '\n$1').replace(versionRegex, packageJSON.version), { variable: 'settings' });
