@@ -14,22 +14,11 @@ module.exports = function(config) {
       'test/**/*.test.js'
     ],
 
-    browsers: ['ChromeHeadlessNoSandbox'],
-
-    customLaunchers: {
-      ChromeHeadlessNoSandbox: {
-        base: 'ChromeHeadless',
-        flags: [
-          '--no-sandbox',
-          '--disable-setuid-sandbox',
-          '--disable-dev-shm-usage'
-        ]
-      }
-    },
-
     frameworks: ['browserify', 'mocha'],
 
     reporters: ['spec'],
+
+    browsers: ['ChromeHeadlessNoSandbox'],
 
     preprocessors: {
       'test/**/*.js': ['browserify']

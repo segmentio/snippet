@@ -4,7 +4,6 @@
 
 ESLINT := node_modules/.bin/eslint
 KARMA := node_modules/.bin/karma
-# Benchmark.js doesn't need a binary reference
 MOCHA := node_modules/.bin/mocha
 _MOCHA := node_modules/.bin/_mocha
 
