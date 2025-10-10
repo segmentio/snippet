@@ -14,10 +14,10 @@ module.exports = function(config) {
       'test/**/*.test.js'
     ],
 
-    browsers: ['ChromeHeadless'],
+    browsers: ['ChromeHeadlessNoSandbox'],
 
     customLaunchers: {
-      ChromeHeadless: {
+      ChromeHeadlessNoSandbox: {
         base: 'ChromeHeadless',
         flags: [
           '--no-sandbox',
