@@ -4,7 +4,6 @@
 
 ESLINT := node_modules/.bin/eslint
 KARMA := node_modules/.bin/karma
-MATCHA := node_modules/.bin/matcha
 MOCHA := node_modules/.bin/mocha
 _MOCHA := node_modules/.bin/_mocha
 
@@ -87,7 +86,7 @@ fmt: build
 .PHONY: fmt
 
 bench: install build
-	@$(MATCHA) test/bench.js
+	@node test/bench.js
 .PHONY: bench
 
 # Run unit tests in node.
